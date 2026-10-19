@@ -7,7 +7,60 @@
 @base <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/> .
 
 <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance> rdf:type owl:Ontology ;
+                                                                               owl:imports <http://www.w3.org/2004/02/skos/core> ;
                                                                                rdfs:comment "This is an ontology containing the AI Act and the Dutch Algoritmekader"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty ;
+                                                 rdfs:subPropertyOf rdfs:label .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#appliesToRiskGroup
+:appliesToRiskGroup rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Requirement ;
+                    rdfs:range :Requirement .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#appliesToRole
+:appliesToRole rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Requirement ;
+               rdfs:range :AlgoritmekaderRole .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#derivedFrom
+:derivedFrom rdf:type owl:ObjectProperty ;
+             rdfs:domain :Requirement ;
+             rdfs:range :GovernanceDocuments ,
+                        :LegalDocuments .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#implements
+:implements rdf:type owl:ObjectProperty ;
+            rdfs:domain :Measure ;
+            rdfs:range :Requirement .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#supportsMeasure
+:supportsMeasure rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Aids ;
+                 rdfs:range :Measure .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#touches
+:touches rdf:type owl:ObjectProperty ;
+         rdfs:domain :Aids ;
+         rdfs:range :Measure .
+
 
 #################################################################
 #    Classes
@@ -31,9 +84,14 @@
       rdfs:comment "This class denotes the 'Hulpmiddelen' as defined in the Algoritmekader" .
 
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AlgoritmekaderRole
+:AlgoritmekaderRole rdf:type owl:Class ;
+                    rdfs:label "Algoritmekader role @en, Algoritmekader rol @nl" .
+
+
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Beleid_en_advies
 :Beleid_en_advies rdf:type owl:Class ;
-                  rdfs:subClassOf :Role ;
+                  rdfs:subClassOf :AlgoritmekaderRole ;
                   rdfs:comment "Dit zijn professionals die ervoor zorgen dat de organisatie algoritmes verantwoord en volgens de beleidsdoelen ontwikkelt en inzet. Bijvoorbeeld een beleidsmedewerker, ethicus, CIO-adviseur of architect."@nl .
 
 
@@ -63,7 +121,7 @@
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Jurist
 :Jurist rdf:type owl:Class ;
-        rdfs:subClassOf :Role ;
+        rdfs:subClassOf :AlgoritmekaderRole ;
         rdfs:comment "Juristen zorgen ervoor dat de organisatie bij het ontwikkelen en gebruiken van algoritmes voldoet aan de wettelijke verplichtingen en beginselen van behoorlijk bestuur. Bijvoorbeeld een privacy-jurist, compliance-officer of functionaris gegevensbescherming (FG)."@nl .
 
 
@@ -83,7 +141,7 @@
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Ontwikkelaar
 :Ontwikkelaar rdf:type owl:Class ;
-              rdfs:subClassOf :Role ;
+              rdfs:subClassOf :AlgoritmekaderRole ;
               rdfs:comment "Ontwikkelaars zijn technische experts die ervoor zorgen dat algoritmes voldoen aan technische en ethische standaarden. Bijvoorbeeld een data-scientist, developer of informatieanalist."@nl .
 
 
@@ -94,7 +152,7 @@
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Projectleider
 :Projectleider rdf:type owl:Class ;
-               rdfs:subClassOf :Role ;
+               rdfs:subClassOf :AlgoritmekaderRole ;
                rdfs:comment "Projectleider verbinden de benodigde expertises en waarborgen alle stappen van het ontwikkelproces. Bijvoorbeeld een product-owner, proceseigenaar of IT-projectmanager."@nl .
 
 
@@ -104,10 +162,6 @@
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/RiskGroup
 :RiskGroup rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Role
-:Role rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/SelfAssessments
