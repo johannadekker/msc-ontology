@@ -1,0 +1,630 @@
+@prefix : <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance-instances> a owl:Ontology ;
+    owl:imports <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance> .
+
+:measure-dat-01 a :Measure ;
+    rdfs:label "Controleer de datakwaliteit"@nl .
+
+:measure-dat-02 a :Measure ;
+    rdfs:label "Toets en analyseer of de inputvariabelen of risicoindicatoren geschikt zijn voor het beoogde algoritme"@nl .
+
+:measure-dat-03 a :Measure ;
+    rdfs:label "Geef data zoals persoonsgegevens een bewaartermijn met een vernietigingsprocedure"@nl .
+
+:measure-dat-04 a :Measure ;
+    rdfs:label "Bescherm persoonsgegevens door data te anonimiseren, pseudonimiseren of te aggregeren"@nl .
+
+:measure-dat-05 a :Measure ;
+    rdfs:label "Controleer de auteursrechten van eigen data"@nl .
+
+:measure-dat-06 a :Measure ;
+    rdfs:label "Gebruik duurzame datacenters"@nl .
+
+:measure-dat-07 a :Measure ;
+    rdfs:label "Gebruik bij machine learning technieken gescheiden train-, test- en validatiedata en houd rekening met underfitting en overfitting"@nl .
+
+:measure-dat-08 a :Measure ;
+    rdfs:label "Zorg dat je controle of eigenaarschap hebt over de data"@nl .
+
+:measure-dat-09 a :Measure ;
+    rdfs:label "Beperk de omvang van datasets voor energie-efficiëntie"@nl .
+
+:measure-dat-10 a :Measure ;
+    rdfs:label "Controleer de data op manipulatie en ongewenste afhankelijkheden"@nl .
+
+:measure-dat-11 a :Measure ;
+    rdfs:label "Controleer de input van gebruikers op misleiding"@nl .
+
+:measure-dat-12 a :Measure ;
+    rdfs:label "Maak waardevolle data vindbaar, toegankelijk, interoperabel en herbruikbaar (FAIR) binnen en buiten de eigen organisatie"@nl .
+
+:measure-imp-01 a :Measure ;
+    rdfs:label "Stel een werkinstructie op voor gebruikers"@nl .
+
+:measure-imp-02 a :Measure ;
+    rdfs:label "Doe aselecte steekproeven om algoritmes met 'risicogestuurde selectie’ te controleren"@nl .
+
+:measure-imp-03 a :Measure ;
+    rdfs:label "Richt bij besluitvorming betekenisvolle menselijke tussenkomst in"@nl .
+
+:measure-imp-04 a :Measure ;
+    rdfs:label "Publiceer impactvolle algoritmes en hoog-risico AI-systemen in het Algoritmeregister"@nl .
+
+:measure-imp-05 a :Measure ;
+    rdfs:label "Vermeld het gebruik van persoonsgegevens in een privacyverklaring"@nl .
+
+:measure-imp-06 a :Measure ;
+    rdfs:label "Richt een proces in zodat burgers of andere belanghebbenden een klacht, bezwaar of beroep kunnen indienen over het gebruik van het algoritme en monitor dit proces"@nl .
+
+:measure-imp-07 a :Measure ;
+    rdfs:label "Vermeld het gebruik van persoonsgegevens in het verwerkingsregister"@nl .
+
+:measure-imp-08 a :Measure ;
+    rdfs:label "Maak een openbaar besluit over de inzet van het algoritme"@nl .
+
+:measure-imp-09 a :Measure ;
+    rdfs:label "Neem technische interventies op in de gebruikersinterface om verkeerd gebruik te voorkomen"@nl .
+
+:measure-imp-10 a :Measure ;
+    rdfs:label "Spreek af hoe de organisatie omgaat met privacy-verzoeken"@nl .
+
+:measure-mon-01 a :Measure ;
+    rdfs:label "Maak back-ups van algoritmes"@nl .
+
+:measure-mon-02 a :Measure ;
+    rdfs:label "Beveilig de software"@nl .
+
+:measure-mon-03 a :Measure ;
+    rdfs:label "Maak een noodplan voor beveiligingsincidenten"@nl .
+
+:measure-mon-04 a :Measure ;
+    rdfs:label "Maak een evaluatieplan voor tijdens het gebruik van het algoritme"@nl .
+
+:measure-mon-05 a :Measure ;
+    rdfs:label "Monitor regelmatig op veranderingen in de data. Bij veranderingen evalueer je de prestaties en output van het algoritme."@nl .
+
+:measure-mon-06 a :Measure ;
+    rdfs:label "Meten, monitoren en rapporteren van milieu-impact van algoritmes"@nl .
+
+:measure-mon-07 a :Measure ;
+    rdfs:label "Stel een plan op voor continue monitoring"@nl .
+
+:measure-mon-08 a :Measure ;
+    rdfs:label "Controleer regelmatig of een algoritme voldoende weerbaar is tegen bekende aanvallen"@nl .
+
+:measure-org-00 a :Measure ;
+    rdfs:label "Inventariseer de algoritmes die binnen jouw organisatie worden gebruikt en houd dit overzicht actueel"@nl .
+
+:measure-org-01 a :Measure ;
+    rdfs:label "Bepaal of er genoeg experts beschikbaar zijn"@nl .
+
+:measure-org-02 a :Measure ;
+    rdfs:label "Stel beleid op voor een verantwoorde inzet van algoritmes binnen de organisatie"@nl .
+
+:measure-org-03 a :Measure ;
+    rdfs:label "Maak een plan voor het omgaan met risico’s"@nl .
+
+:measure-org-04 a :Measure ;
+    rdfs:label "Zorg voor politiek-bestuurlijk bewustzijn, betrokkenheid, en verantwoordelijkheid"@nl .
+
+:measure-org-05 a :Measure ;
+    rdfs:label "Sluit algoritmegovernance aan op bestaande governancestructuren binnen de organisatie"@nl .
+
+:measure-org-06 a :Measure ;
+    rdfs:label "Gebruik een algoritme volwassenheidsmodel om te weten waar de organisatie staat"@nl .
+
+:measure-org-07 a :Measure ;
+    rdfs:label "Richt een algoritmegovernance in op basis van het Three Lines-model"@nl .
+
+:measure-org-08 a :Measure ;
+    rdfs:label "Richt vaste beslismomenten en controlepunten in in de algoritmelevenscyclus"@nl .
+
+:measure-org-09 a :Measure ;
+    rdfs:label "Richt algoritmegovernance in op basis van de risicoclassificatie van algoritmes"@nl .
+
+:measure-org-10 a :Measure ;
+    rdfs:label "Taken en verantwoordelijkheden zijn toebedeeld in de algoritmegovernance"@nl .
+
+:measure-org-11 a :Measure ;
+    rdfs:label "Maak afspraken over het beheer van gebruikers"@nl .
+
+:measure-org-12 a :Measure ;
+    rdfs:label "Controleer en verbeter regelmatig de kwaliteit van het algoritme"@nl .
+
+:measure-org-13 a :Measure ;
+    rdfs:label "Maak afspraken over het beheer van wachtwoorden"@nl .
+
+:measure-org-14 a :Measure ;
+    rdfs:label "Maak afspraken over het wijzigen van de code"@nl .
+
+:measure-org-15 a :Measure ;
+    rdfs:label "Stel een protocol vast voor de situatie dat er (een vermoeden van) discriminatie door een algoritme is geconstateerd en pas dit wanneer nodig toe"@nl .
+
+:measure-org-16 a :Measure ;
+    rdfs:label "Zorg voor bewustwording en voldoende opleidingen over de risico's en kansen van algoritmes en AI"@nl .
+
+:measure-owk-01 a :Measure ;
+    rdfs:label "Ontwerp en ontwikkel het algoritme volgens de principes van ‘security by design’"@nl .
+
+:measure-owk-02 a :Measure ;
+    rdfs:label "Maak een noodplan voor het stoppen van het algoritme"@nl .
+
+:measure-owk-03 a :Measure ;
+    rdfs:label "Analyseer de privacy-risico’s en neem maatregelen om deze risico’s laag te houden"@nl .
+
+:measure-owk-04 a :Measure ;
+    rdfs:label "Maak logbestanden waarin staat wie wanneer toegang had tot de data en de code"@nl .
+
+:measure-owk-05 a :Measure ;
+    rdfs:label "Kies energiezuinige programmeermethoden"@nl .
+
+:measure-owk-06 a :Measure ;
+    rdfs:label "Optimaliseer AI-trainingsprocessen voor energie-efficiëntie"@nl .
+
+:measure-owk-07 a :Measure ;
+    rdfs:label "Zorg voor reproduceerbaarheid van de uitkomsten"@nl .
+
+:measure-owk-08 a :Measure ;
+    rdfs:label "Bepaal welke feedbackloops van invloed zijn op het algoritme"@nl .
+
+:measure-owk-09 a :Measure ;
+    rdfs:label "Ontwerp en train het algoritme om bestand te zijn tegen (cyber)aanvallen"@nl .
+
+:measure-owk-10 a :Measure ;
+    rdfs:label "Zorg dat (gevoelige) informatie niet kan lekken op basis van de output van het algoritme"@nl .
+
+:measure-owk-11 a :Measure ;
+    rdfs:label "Documenteer en beargumenteer de keuze voor gebruikte modellen en parameters"@nl .
+
+:measure-owk-12 a :Measure ;
+    rdfs:label "Gebruik een passende licentie bij publicatie of gebruik van (open) data"@nl .
+
+:measure-owp-01 a :Measure ;
+    rdfs:label "Beschrijf de rollen en verantwoordelijkheden voor het ontwikkelen en gebruiken van algoritmes"@nl .
+
+:measure-owp-02 a :Measure ;
+    rdfs:label "Voer voorafgaand aan een project een data beschikbaarheid, kwaliteit- en toegankelijkheidsanalayse uit"@nl .
+
+:measure-owp-03 a :Measure ;
+    rdfs:label "Beschrijf voor welk doel het algoritme persoonsgegevens gebruikt en waarom dit mag"@nl .
+
+:measure-owp-04 a :Measure ;
+    rdfs:label "Beschrijf welke techniek gebruikt wordt voor de beoogde toepassing"@nl .
+
+:measure-owp-05 a :Measure ;
+    rdfs:label "Stel vast in welke risicogroep het algoritme valt en bepaal vervolgens welke vereisten van toepassing zijn."@nl .
+
+:measure-owp-06 a :Measure ;
+    rdfs:label "Leg vast wat de impact van het algoritme is als het niet werkt zoals beoogd"@nl .
+
+:measure-owp-07 a :Measure ;
+    rdfs:label "Inventariseer welke grondrechten het algoritme kan schenden en maak een belangenafweging"@nl .
+
+:measure-owp-08 a :Measure ;
+    rdfs:label "Maak een lijst van de meest kwetsbare groepen en bescherm hen extra"@nl .
+
+:measure-owp-09 a :Measure ;
+    rdfs:label "Bepaal welke documenten voor hoe lang gearchiveerd moeten worden"@nl .
+
+:measure-owp-10 a :Measure ;
+    rdfs:label "Maak een Project Startarchitectuur (PSA) voor de ontwikkeling of inkoop van algoritmes"@nl .
+
+:measure-owp-11 a :Measure ;
+    rdfs:label "Beschrijf welke data gebruikt wordt voor de beoogde toepassing"@nl .
+
+:measure-owp-12 a :Measure ;
+    rdfs:label "Koop duurzaam algoritmes in"@nl .
+
+:measure-owp-13 a :Measure ;
+    rdfs:label "Ontwerp algoritmes zo eenvoudig mogelijk"@nl .
+
+:measure-owp-14 a :Measure ;
+    rdfs:label "Maak het opstellen van een verwerkersovereenkomst onderdeel van de aanbesteding als persoonsgegevens worden verwerkt"@nl .
+
+:measure-owp-15 a :Measure ;
+    rdfs:label "Bespreek de vereisten die gelden voor een verantwoorde inzet van algoritmes met aanbieders"@nl .
+
+:measure-owp-16 a :Measure ;
+    rdfs:label "Maak vereisten voor algoritmes onderdeel van algemene inkoopvoorwaarden en de contractovereenkomst"@nl .
+
+:measure-owp-17 a :Measure ;
+    rdfs:label "Maak het leveren van bewijs voor het voldoen aan de vereisten voor algoritmes onderdeel van de beoordeling van een inschrijving"@nl .
+
+:measure-owp-18 a :Measure ;
+    rdfs:label "Laat aanbieder(s) bewijs leveren dat de door hen ontwikkelde algoritmes geen inbreuk maken op de auteursrechten van derden met de trainingsdata en de output"@nl .
+
+:measure-owp-19 a :Measure ;
+    rdfs:label "Aansprakelijkheidsvoorwaarden van een aanbieder worden beoordeeld in de aanbesteding"@nl .
+
+:measure-owp-20 a :Measure ;
+    rdfs:label "Maak vereisten onderdeel van (sub)gunningscriteria bij een aanbesteding"@nl .
+
+:measure-owp-21 a :Measure ;
+    rdfs:label "Creëer ruimte om met een aanbieder samen te gaan werken om specifieke vereisten te realiseren"@nl .
+
+:measure-owp-22 a :Measure ;
+    rdfs:label "Vul technische documentatie van aanbieder aan met relevante informatie vanuit de gebruiksverantwoordelijke"@nl .
+
+:measure-owp-23 a :Measure ;
+    rdfs:label "Neem het kunnen uitvoeren van een audit over de vereiste op in contractvoorwaarden en de contractovereenkomst"@nl .
+
+:measure-owp-24 a :Measure ;
+    rdfs:label "Bepaal in een aanbesteding of algoritmes van een aanbieder bepalende invloed hebben in een besluit richting personen"@nl .
+
+:measure-owp-25 a :Measure ;
+    rdfs:label "Laat de aanbieder aangeven welke mate van opleiding en ondersteuning bij de implementatie nodig is om de beoogde algoritmes verantwoord te gebruiken"@nl .
+
+:measure-owp-26 a :Measure ;
+    rdfs:label "Voer een risico-analyse met de aanbieder uit op het gebied van informatiebeveiliging bij een uitbestedingstraject"@nl .
+
+:measure-owp-27 a :Measure ;
+    rdfs:label "Maak vereisten onderdeel van het programma van eisen bij een aanbesteding"@nl .
+
+:measure-owp-28 a :Measure ;
+    rdfs:label "Maak vereisten voor algoritmes onderdeel van de Service Level Agreement"@nl .
+
+:measure-owp-29 a :Measure ;
+    rdfs:label "Maak (contractuele) afspraken over data en artefacten met een aanbieder"@nl .
+
+:measure-owp-30 a :Measure ;
+    rdfs:label "Stel vast welke betrokkenen geïnformeerd moeten worden en welke informatie zij nodig hebben"@nl .
+
+:measure-owp-31 a :Measure ;
+    rdfs:label "Pas vastgestelde interne beleidskaders toe en maak aantoonbaar dat deze zijn nageleefd bij het ontwikkelen, inkopen en gebruiken van algoritmes"@nl .
+
+:measure-owp-32 a :Measure ;
+    rdfs:label "Pas uitlegbaarheidstechnieken toe en evalueer en valideer deze"@nl .
+
+:measure-owp-33 a :Measure ;
+    rdfs:label "Identificeer en implementeer technische interventies die robuustheid vergroten"@nl .
+
+:measure-owp-34 a :Measure ;
+    rdfs:label "Voorkom kwetsbaarheden die geïntroduceerd worden in de supply-chain van het algoritme"@nl .
+
+:measure-owp-35 a :Measure ;
+    rdfs:label "Maak gebruik van een algoritme dat bronvermelding kan genereren bij de output"@nl .
+
+:measure-owp-36 a :Measure ;
+    rdfs:label "Bepaal of een algoritme moet worden ontwikkeld of ingekocht"@nl .
+
+:measure-pba-01 a :Measure ;
+    rdfs:label "Beschrijf het probleem dat het algoritme moet oplossen"@nl .
+
+:measure-pba-02 a :Measure ;
+    rdfs:label "Beschrijf het doel van het algoritme"@nl .
+
+:measure-pba-03 a :Measure ;
+    rdfs:label "Beschrijf waarom een algoritme het probleem moet oplossen"@nl .
+
+:measure-pba-04 a :Measure ;
+    rdfs:label "Overleg regelmatig met belanghebbenden"@nl .
+
+:measure-pba-05 a :Measure ;
+    rdfs:label "Beschrijf de wettelijke grondslag voor de inzet van het algoritme"@nl .
+
+:measure-pba-06 a :Measure ;
+    rdfs:label "Stel een multidisciplinair team samen bij het ontwikkelen of inkopen van algoritmes"@nl .
+
+:measure-uit-01 a :Measure ;
+    rdfs:label "Bij uitfaseren en doorontwikkeling wordt correct omgegaan met data en modelinformatie"@nl .
+
+:measure-ver-01 a :Measure ;
+    rdfs:label "Controleer regelmatig of het algoritme werkt zoals het bedoeld is"@nl .
+
+:measure-ver-02 a :Measure ;
+    rdfs:label "Evalueer de nauwkeurigheid van het algoritme"@nl .
+
+:measure-ver-03 a :Measure ;
+    rdfs:label "Toets het algoritme op bias en voer een rechtvaardigingstoets uit"@nl .
+
+:measure-ver-04 a :Measure ;
+    rdfs:label "Zorg voor een representatieve testomgeving"@nl .
+
+:measure-ver-05 a :Measure ;
+    rdfs:label "Controleer regelmatig of het algoritme voldoet aan alle wetten en regels en het eigen beleid"@nl .
+
+:measure-ver-06 a :Measure ;
+    rdfs:label "Evalueer de betrouwbaarheid van het algoritme"@nl .
+
+:requirement-aia-00 a :Requirement ;
+    rdfs:label "Verboden AI mag niet worden gebruikt"@nl .
+
+:requirement-aia-01 a :Requirement ;
+    rdfs:label "Personeel en gebruikers zijn voldoende AI-geletterd"@nl .
+
+:requirement-aia-02 a :Requirement ;
+    rdfs:label "Beoordeling als niet 'hoog-risico-AI-systeem' is gedocumenteerd"@nl .
+
+:requirement-aia-03 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een risicobeheersysteem"@nl .
+
+:requirement-aia-04 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen vormen geen risico voor kwetsbare groepen zoals kinderen"@nl .
+
+:requirement-aia-05 a :Requirement ;
+    rdfs:label "Datasets voor hoog-risico-AI-systemen voldoen aan kwaliteitscriteria"@nl .
+
+:requirement-aia-06 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voorzien van voldoende technische documentatie"@nl .
+
+:requirement-aia-07 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen loggen automatisch bepaalde gegevens"@nl .
+
+:requirement-aia-08 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn op een transparante manier ontwikkeld en ontworpen"@nl .
+
+:requirement-aia-09 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen staan onder menselijk toezicht"@nl .
+
+:requirement-aia-10 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voldoende nauwkeurig, robuust en cyberveilig"@nl .
+
+:requirement-aia-11 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een kwaliteitsbeheersysteem"@nl .
+
+:requirement-aia-12 a :Requirement ;
+    rdfs:label "Documentatie over hoog-risico-AI-systemen wordt 10 jaar bewaard door de aanbieder"@nl .
+
+:requirement-aia-13 a :Requirement ;
+    rdfs:label "Logs van hoog-risico-AI-systemen worden zes maanden bewaard door de aanbieder"@nl .
+
+:requirement-aia-14 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen worden pas geleverd of gebruikt na een conformiteitsbeoordelingsprocedure"@nl .
+
+:requirement-aia-15 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een EU-conformiteitsverklaring"@nl .
+
+:requirement-aia-16 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een CE-markering"@nl .
+
+:requirement-aia-17 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn geregistreerd in de EU-databank"@nl .
+
+:requirement-aia-18 a :Requirement ;
+    rdfs:label "Als een hoog-risico-AI-systeem niet voldoet aan de AI-verordening, grijpt de aanbieder in"@nl .
+
+:requirement-aia-19 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen voldoen aan de toegankelijkheidseisen"@nl .
+
+:requirement-aia-20 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen worden gebruikt volgens de gebruiksaanwijzing"@nl .
+
+:requirement-aia-21 a :Requirement ;
+    rdfs:label "Menselijk toezicht van hoog-risico-AI-systemen wordt uitgevoerd door mensen met voldoende kennis en mogelijkheden"@nl .
+
+:requirement-aia-22 a :Requirement ;
+    rdfs:label "De werking van hoog-risico-AI-systemen wordt gemonitord"@nl .
+
+:requirement-aia-23 a :Requirement ;
+    rdfs:label "Logs voor hoog-risico-AI-systemen worden bewaard door de gebruiksverantwoordelijke"@nl .
+
+:requirement-aia-24 a :Requirement ;
+    rdfs:label "Werknemers weten dat hun organisatie een hoog-risico AI-systeem gebruikt"@nl .
+
+:requirement-aia-25 a :Requirement ;
+    rdfs:label "Gebruiksverantwoordelijken controleren de registratie van het hoog-risico AI-systeem in de EU-databank"@nl .
+
+:requirement-aia-26 a :Requirement ;
+    rdfs:label "Mensen over wie besluiten worden genomen door een hoog-risico-AI-systemen, krijgen op verzoek informatie over deze besluiten"@nl .
+
+:requirement-aia-27 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen voor publieke taken worden beoordeeld op gevolgen voor grondrechten"@nl .
+
+:requirement-aia-28 a :Requirement ;
+    rdfs:label "AI-systemen worden zo ontworpen en gebruikt, dat mensen begrijpen wanneer zij met een AI-systeem communiceren en welke content gemaakt is door een AI-systeem"@nl .
+
+:requirement-aia-29 a :Requirement ;
+    rdfs:label "AI-modellen voor algemene doeleinden zijn voorzien van voldoende technische documentatie en informatie"@nl .
+
+:requirement-aia-30 a :Requirement ;
+    rdfs:label "Aanbieders van AI-modellen voor algemene doeleinden met een systeemrisico treffen extra maatregelen"@nl .
+
+:requirement-aia-31 a :Requirement ;
+    rdfs:label "Als AI-modellen voor algemene doeleinden met systeemrisico’s ernstige incidenten veroorzaken, wordt dit gedocumenteerd en gerapporteerd"@nl .
+
+:requirement-aia-32 a :Requirement ;
+    rdfs:label "AI-modellen voor algemene doeleinden met systeemrisico’s zijn voldoende beveiligd tegen cyberaanvallen"@nl .
+
+:requirement-aia-34 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een monitoringsysteem"@nl .
+
+:requirement-aia-35 a :Requirement ;
+    rdfs:label "Ernstige incidenten door hoog-risico-AI-systemen worden gemeld aan de toezichthouder"@nl .
+
+:requirement-aia-36 a :Requirement ;
+    rdfs:label "Klokkenluiders kunnen veilig melden dat een organisatie zich niet houdt aan de AI-verordening"@nl .
+
+:requirement-aia-37 a :Requirement ;
+    rdfs:label "Aanbieders van AI-systemen kunnen een klacht indienen over de aanbieder van hun AI-model"@nl .
+
+:requirement-aia-38 a :Requirement ;
+    rdfs:label "Hoog-risico-AI-systemen zijn getest"@nl .
+
+:requirement-aia-39 a :Requirement ;
+    rdfs:label "Er is beleid opgesteld ter naleving van auteursrechten en naburige rechten door aanbieders van AI-modellen voor algemene doeleinden"@nl .
+
+:requirement-arc-01 a :Requirement ;
+    rdfs:label "Informatie over algoritmes wordt in goede, geordende en toegankelijke staat gebracht, bewaard en vernietigd wanneer nodig"@nl .
+
+:requirement-aut-01 a :Requirement ;
+    rdfs:label "Auteursrechten zijn beschermd"@nl .
+
+:requirement-avg-01 a :Requirement ;
+    rdfs:label "Persoonsgegevens worden op een rechtmatige manier verwerkt"@nl .
+
+:requirement-avg-02 a :Requirement ;
+    rdfs:label "Persoonsgegevens worden zo kort mogelijk bewaard"@nl .
+
+:requirement-avg-03 a :Requirement ;
+    rdfs:label "Persoonsgegevens worden zo min mogelijk verwerkt"@nl .
+
+:requirement-avg-04 a :Requirement ;
+    rdfs:label "Persoonsgegevens en andere data verwerken gebeurt proportioneel en subsidiair"@nl .
+
+:requirement-avg-05 a :Requirement ;
+    rdfs:label "Persoonsgegevens zijn juist en actueel"@nl .
+
+:requirement-avg-06 a :Requirement ;
+    rdfs:label "Organisaties kunnen bewijzen dat zij persoonsgegevens op de juiste manier verwerken"@nl .
+
+:requirement-avg-07 a :Requirement ;
+    rdfs:label "Organisaties zijn transparant over het verwerken van persoonsgegevens"@nl .
+
+:requirement-avg-08 a :Requirement ;
+    rdfs:label "Gevoelige persoonsgegevens worden alleen gebruikt als hiervoor een wettelijke uitzondering geldt"@nl .
+
+:requirement-avg-09 a :Requirement ;
+    rdfs:label "Betrokkenen kunnen een beroep doen op hun privacyrechten"@nl .
+
+:requirement-avg-10 a :Requirement ;
+    rdfs:label "Besluiten met rechtsgevolgen of aanmerkelijke effecten zijn niet volledig geautomatiseerd"@nl .
+
+:requirement-avg-11 a :Requirement ;
+    rdfs:label "Ontwerp en standaardinstellingen (defaults) zijn zo gunstig mogelijk voor de privacy van betrokkenen"@nl .
+
+:requirement-avg-12 a :Requirement ;
+    rdfs:label "Data zoals persoonsgegevens zijn voldoende beveiligd tegen ongelukken en cyberaanvallen"@nl .
+
+:requirement-avg-13 a :Requirement ;
+    rdfs:label "Een gegevensbeschermingseffectbeoordeling (DPIA) is verplicht, indien een verwerking van persoonsgegevens waarschijnlijk een hoog risico inhoudt voor de rechten en vrijheden van natuurlijke personen"@nl .
+
+:requirement-awb-01 a :Requirement ;
+    rdfs:label "Organisaties die algoritmes gebruiken voor publieke taken nemen besluiten zorgvuldig"@nl .
+
+:requirement-awb-02 a :Requirement ;
+    rdfs:label "Organisaties kunnen duidelijk uitleggen waarom en hoe algoritmes leiden tot een besluit"@nl .
+
+:requirement-bio-01 a :Requirement ;
+    rdfs:label "Computersystemen zijn voldoende beveiligd tegen ongelukken en cyberaanvallen"@nl .
+
+:requirement-bzk-01 a :Requirement ;
+    rdfs:label "Impactvolle algoritmes en hoog-risico-AI-systemen staan in het Nederlandse Algoritmeregister"@nl .
+
+:requirement-dat-01 a :Requirement ;
+    rdfs:label "Databanken worden alleen gebruikt met toestemming van de databank-producent"@nl .
+
+:requirement-grw-01 a :Requirement ;
+    rdfs:label "Algoritmes schenden geen grondrechten of mensenrechten"@nl .
+
+:requirement-grw-02 a :Requirement ;
+    rdfs:label "Algoritmes discrimineren niet"@nl .
+
+:requirement-woo-01 a :Requirement ;
+    rdfs:label "Iedereen kan openbare informatie over algoritmes vinden of aanvragen"@nl .
+
+:tools-AI-Geletterdheid-self-assessment a :SelfAssessment,
+        :Tools ;
+    rdfs:label "AI-Geletterdheid Self-assessment"@nl .
+
+:tools-AIIA a :Guidance,
+        :ImpactAssessment,
+        :Tools ;
+    rdfs:label "AI Impact Assessment (AIIA)"@nl .
+
+:tools-ALTAI a :AssessmentFramework,
+        :Tools ;
+    rdfs:label "Assessment List for Trustworthy Artificial Intelligence (ALTAI)"@nl .
+
+:tools-BIO a :Guidance,
+        :Tools ;
+    rdfs:label "Baseline Informatiebeveiliging Overheid (BIO)"@nl .
+
+:tools-DEDA a :Guidance,
+        :Tools ;
+    rdfs:label "De Ethische Data Assistent"@nl .
+
+:tools-DPIA a :ImpactAssessment,
+        :Tools ;
+    rdfs:label "Data Protection Impact Assessment"@nl .
+
+:tools-IAMA a :ImpactAssessment,
+        :Tools ;
+    rdfs:label "Impact Assessment Mensenrechten en Algoritmes"@nl .
+
+:tools-Impactanalyse-AI-verordening a :ImpactAssessment,
+        :Tools ;
+    rdfs:label "Impactanalyse AI-verordening"@nl .
+
+:tools-aanpak-begeleidingsethiek a :Tools ;
+    rdfs:label "Aanpak begeleidingsethiek"@nl .
+
+:tools-algoritmeregister a :Register,
+        :Tools ;
+    rdfs:label "Algoritmeregister"@nl .
+
+:tools-blauwdruk-template-AI-geletterdheidsprogramma a :Template,
+        :Tools ;
+    rdfs:label "Blauwdruk AI-geletterdheidsprogramma"@nl .
+
+:tools-factsheet-AI-geletterdheid-bestuurders a :Factsheet,
+        :Tools ;
+    rdfs:label "Factsheet AI-geletterdheid voor bestuurders"@nl .
+
+:tools-factsheet-AI-geletterdheid-inkopers a :Factsheet,
+        :Tools ;
+    rdfs:label "Factsheet AI-geletterdheid voor inkopers"@nl .
+
+:tools-factsheet-AI-verordening-bestuurders a :Factsheet,
+        :Tools ;
+    rdfs:label "Factsheet AI-verordening voor bestuurders"@nl .
+
+:tools-fairness-handbook a :Guidance,
+        :Tools ;
+    rdfs:label "The Fairness Handbook"@nl .
+
+:tools-framework-meaningful-engagement a :Guidance,
+        :Tools ;
+    rdfs:label "Framework for Meaningful Engagement"@nl .
+
+:tools-functioneringsgesprek-AI a :AssessmentFramework,
+        :Tools ;
+    rdfs:label "Functioneringsgesprek AI"@nl .
+
+:tools-genAI-compliance-FAQ a :Factsheet,
+        :Tools ;
+    rdfs:label "Veelgestelde vragen compliance generatieve AI"@nl .
+
+:tools-governancekader-VNG a :Guidance,
+        :Register,
+        :Tools ;
+    rdfs:label "Governancekader AI en algoritmen voor en door gemeenten"@nl .
+
+:tools-handreiking-identificatie-classificatie-AI-systemen a :Guidance,
+        :Tools ;
+    rdfs:label "Handreiking inventarisatie, identificatie en classificatie AI-systemen"@nl .
+
+:tools-handreiking-non-discriminatie a :Guidance,
+        :Tools ;
+    rdfs:label "Handreiking non-discriminatie by design"@nl .
+
+:tools-inkoopvoorwaarden a :Template,
+        :Tools ;
+    rdfs:label "Inkoopvoorwaarden"@nl .
+
+:tools-onderzoekskader-adr a :AssessmentFramework,
+        :Tools ;
+    rdfs:label "Onderzoekskader algoritmes Auditdienst Rijk 2023"@nl .
+
+:tools-roadmap-inwerkingtreding-AI-verordening a :Roadmap,
+        :Tools ;
+    rdfs:label "Roadmap inwerkingtreding AI-verordening"@nl .
+
+:tools-standaarden a :Standard,
+        :Tools ;
+    rdfs:label "Standaarden"@nl .
+
+:tools-toetsingskader-algemene-rekenkamer a :AssessmentFramework,
+        :Tools ;
+    rdfs:label "Toetsingskader Algoritmes Algemene Rekenkamer"@nl .
+
+:tools-toetsingskader-risicoprofilering a :AssessmentFramework,
+        :Tools ;
+    rdfs:label "Toetsingskader risicoprofilering – Normen tegen discriminatie op grond van ras en nationaliteit"@nl .
+
+:tools-wettelijke-vereisten-AI-geletterdheid a :Factsheet,
+        :Tools ;
+    rdfs:label "Wettelijke vereisten AI-geletterdheid"@nl .
+

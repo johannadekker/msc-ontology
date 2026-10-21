@@ -23,42 +23,42 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#appliesToRiskGroup
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRiskGroup
 :appliesToRiskGroup rdf:type owl:ObjectProperty ;
                     rdfs:domain :Requirement ;
                     rdfs:range :Requirement .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#appliesToRole
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRole
 :appliesToRole rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty ;
                rdfs:domain :Requirement ;
                rdfs:range :AlgoritmekaderRole .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#derivedFrom
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/derivedFrom
 :derivedFrom rdf:type owl:ObjectProperty ;
-             rdfs:domain :Requirement ;
-             rdfs:range :GovernanceDocuments ,
-                        :LegalDocuments .
+             rdfs:domain :Requirement .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#implements
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/implements
 :implements rdf:type owl:ObjectProperty ;
-            rdfs:domain :Measure ;
+            rdfs:domain :AIActRole ,
+                        :AlgoritmekaderRole ,
+                        :Measure ;
             rdfs:range :Requirement .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#supportsMeasure
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/supportsMeasure
 :supportsMeasure rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:domain :Aids ;
+                 rdfs:domain :Tools ;
                  rdfs:range :Measure .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#touches
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/touches
 :touches rdf:type owl:ObjectProperty ;
-         rdfs:domain :Aids ;
+         rdfs:domain :Tools ;
          rdfs:range :Measure .
 
 
@@ -66,22 +66,80 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#LegalSource
-:LegalSource rdf:type owl:Class .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AssessmentFramework
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AssessmentFramework> rdf:type owl:Class ;
+                                                                rdfs:subClassOf :Tools ;
+                                                                rdfs:comment "CSV value: toetsingskader" ;
+                                                                rdfs:label "Toetsingskader"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#Measure
-:Measure rdf:type owl:Class .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Factsheet
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Factsheet> rdf:type owl:Class ;
+                                                      rdfs:subClassOf :Tools ;
+                                                      rdfs:comment "CSV value: factsheet" .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Guidance
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Guidance> rdf:type owl:Class ;
+                                                     rdfs:subClassOf :Tools ;
+                                                     rdfs:comment "CSV value: handreiking" ;
+                                                     rdfs:label "Guidance"@en ,
+                                                                "Handreiking"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/ImpactAssessment
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/ImpactAssessment> rdf:type owl:Class ;
+                                                             rdfs:subClassOf :Tools ;
+                                                             rdfs:comment "CSV value: impact-assessment" ;
+                                                             rdfs:label "Impact Assessment"@en ,
+                                                                        "Impact Assessment"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Register
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Register> rdf:type owl:Class ;
+                                                     rdfs:subClassOf :Tools ;
+                                                     rdfs:comment "CSV value: register" .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Roadmap
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Roadmap> rdf:type owl:Class ;
+                                                    rdfs:subClassOf :Tools ;
+                                                    rdfs:comment "CSV value: roadmap" .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Standard
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Standard> rdf:type owl:Class ;
+                                                     rdfs:subClassOf :Tools ;
+                                                     rdfs:comment "CSV value: standaard" ;
+                                                     rdfs:label "Standaard"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Template
+<http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Template> rdf:type owl:Class ;
+                                                     rdfs:subClassOf :Tools ;
+                                                     rdfs:comment "CSV value: template" .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#SelfAssessment
+:SelfAssessment rdf:type owl:Class ;
+                rdfs:subClassOf :Tools ;
+                rdfs:comment "CSV value: self-assessment" ;
+                rdfs:label "Self-Assessment"@en ,
+                           "Self-Assessment"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AIActRole
+:AIActRole rdf:type owl:Class ;
+           rdfs:label "RolAIAct"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AISystem
 :AISystem rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Aids
-:Aids rdf:type owl:Class ;
-      rdfs:subClassOf :Documents ;
-      rdfs:comment "This class denotes the 'Hulpmiddelen' as defined in the Algoritmekader" .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Aanbieder
+:Aanbieder rdf:type owl:Class ;
+           rdfs:subClassOf :AIActRole .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AlgoritmekaderRole
@@ -95,18 +153,23 @@
                   rdfs:comment "Dit zijn professionals die ervoor zorgen dat de organisatie algoritmes verantwoord en volgens de beleidsdoelen ontwikkelt en inzet. Bijvoorbeeld een beleidsmedewerker, ethicus, CIO-adviseur of architect."@nl .
 
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Distributeur
+:Distributeur rdf:type owl:Class ;
+              rdfs:subClassOf :AIActRole .
+
+
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Documents
 :Documents rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Gebruiksverantwoordelijke
+:Gebruiksverantwoordelijke rdf:type owl:Class ;
+                           rdfs:subClassOf :AIActRole .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/GeneralPurposeAISystem
 :GeneralPurposeAISystem rdf:type owl:Class ;
                         rdfs:subClassOf :AISystem .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/GovernanceDocuments
-:GovernanceDocuments rdf:type owl:Class ;
-                     rdfs:subClassOf :Documents .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/GovernanceObligations
@@ -119,15 +182,15 @@
                   rdfs:subClassOf :AISystem .
 
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Importeur
+:Importeur rdf:type owl:Class ;
+           rdfs:subClassOf :AIActRole .
+
+
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Jurist
 :Jurist rdf:type owl:Class ;
         rdfs:subClassOf :AlgoritmekaderRole ;
         rdfs:comment "Juristen zorgen ervoor dat de organisatie bij het ontwikkelen en gebruiken van algoritmes voldoet aan de wettelijke verplichtingen en beginselen van behoorlijk bestuur. Bijvoorbeeld een privacy-jurist, compliance-officer of functionaris gegevensbescherming (FG)."@nl .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/LegalDocuments
-:LegalDocuments rdf:type owl:Class ;
-                rdfs:subClassOf :Documents .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/LegalObligations
@@ -135,8 +198,16 @@
                   rdfs:subClassOf :Requirement .
 
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/LegalSource
+:LegalSource rdf:type owl:Class .
+
+
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Lifecycle
 :Lifecycle rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Measure
+:Measure rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Ontwikkelaar
@@ -164,13 +235,14 @@
 :RiskGroup rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/SelfAssessments
-:SelfAssessments rdf:type owl:Class ;
-                 rdfs:subClassOf :Documents .
-
-
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/SubjectAK
 :SubjectAK rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Tools
+:Tools rdf:type owl:Class ;
+       rdfs:subClassOf :Documents ;
+       rdfs:comment "This class denotes the 'Hulpmiddelen' as defined in the Algoritmekader" .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
