@@ -622,11 +622,14 @@
 
 :requirement-aia-38 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn getest"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-ontwikkelen,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
@@ -1401,11 +1404,17 @@
 
 :requirement-woo-01 a :Requirement ;
     rdfs:label "Iedereen kan openbare informatie over algoritmes vinden of aanvragen"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
@@ -1678,12 +1687,15 @@
 
 :requirement-aia-00 a :Requirement ;
     rdfs:label "Verboden AI mag niet worden gebruikt"@nl ;
+    :appliesToRiskGroup :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-organisatieverantwoordelijkheden,
         :stage-probleemanalyse ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :measure-imp-04 a :Measure ;
@@ -1768,9 +1780,12 @@
 
 :requirement-aia-23 a :Requirement ;
     rdfs:label "Logs voor hoog-risico-AI-systemen worden bewaard door de gebruiksverantwoordelijke"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-31 a :Requirement ;
@@ -1781,28 +1796,42 @@
 
 :requirement-aia-36 a :Requirement ;
     rdfs:label "Klokkenluiders kunnen veilig melden dat een organisatie zich niet houdt aan de AI-verordening"@nl ;
+    :appliesToRiskGroup :riskgroup-high,
+        :riskgroup-not-high ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-37 a :Requirement ;
     rdfs:label "Aanbieders van AI-systemen kunnen een klacht indienen over de aanbieder van hun AI-model"@nl ;
+    :appliesToRiskGroup :riskgroup-high,
+        :riskgroup-not-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-avg-08 a :Requirement ;
     rdfs:label "Gevoelige persoonsgegevens worden alleen gebruikt als hiervoor een wettelijke uitzondering geldt"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-jurist,
         :role-projectleider .
@@ -1841,31 +1870,43 @@
 
 :requirement-aia-13 a :Requirement ;
     rdfs:label "Logs van hoog-risico-AI-systemen worden zes maanden bewaard door de aanbieder"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-uitfaseren ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-17 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn geregistreerd in de EU-databank"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-20 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen worden gebruikt volgens de gebruiksaanwijzing"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-implementatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aia-25 a :Requirement ;
     rdfs:label "Gebruiksverantwoordelijken controleren de registratie van het hoog-risico AI-systeem in de EU-databank"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-implementatie,
         :stage-monitoring-en-beheer,
         :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-29 a :Requirement ;
@@ -1887,51 +1928,76 @@
 
 :requirement-aia-35 a :Requirement ;
     rdfs:label "Ernstige incidenten door hoog-risico-AI-systemen worden gemeld aan de toezichthouder"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-avg-06 a :Requirement ;
     rdfs:label "Organisaties kunnen bewijzen dat zij persoonsgegevens op de juiste manier verwerken"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist .
 
 :requirement-aia-15 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een EU-conformiteitsverklaring"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-aia-16 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een CE-markering"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-24 a :Requirement ;
     rdfs:label "Werknemers weten dat hun organisatie een hoog-risico AI-systeem gebruikt"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-implementatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-26 a :Requirement ;
     rdfs:label "Mensen over wie besluiten worden genomen door een hoog-risico-AI-systemen, krijgen op verzoek informatie over deze besluiten"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-avg-03 a :Requirement ;
     rdfs:label "Persoonsgegevens worden zo min mogelijk verwerkt"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -1939,21 +2005,29 @@
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-ontwikkelaar .
 
 :requirement-aia-02 a :Requirement ;
     rdfs:label "Beoordeling als niet 'hoog-risico-AI-systeem' is gedocumenteerd"@nl ;
+    :appliesToRiskGroup :riskgroup-not-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-12 a :Requirement ;
     rdfs:label "Documentatie over hoog-risico-AI-systemen wordt 10 jaar bewaard door de aanbieder"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-uitfaseren ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :measure-org-02 a :Measure ;
@@ -1970,37 +2044,53 @@
 
 :requirement-aia-04 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen vormen geen risico voor kwetsbare groepen zoals kinderen"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aia-07 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen loggen automatisch bepaalde gegevens"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-14 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen worden pas geleverd of gebruikt na een conformiteitsbeoordelingsprocedure"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-aia-19 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen voldoen aan de toegankelijkheidseisen"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-02 a :Requirement ;
     rdfs:label "Persoonsgegevens worden zo kort mogelijk bewaard"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2008,32 +2098,50 @@
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp,
         :stage-uitfaseren ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar .
 
 :requirement-avg-04 a :Requirement ;
     rdfs:label "Persoonsgegevens en andere data verwerken gebeurt proportioneel en subsidiair"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-ontwikkelaar .
 
 :requirement-avg-05 a :Requirement ;
     rdfs:label "Persoonsgegevens zijn juist en actueel"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-13 a :Requirement ;
     rdfs:label "Een gegevensbeschermingseffectbeoordeling (DPIA) is verplicht, indien een verwerking van persoonsgegevens waarschijnlijk een hoog risico inhoudt voor de rechten en vrijheden van natuurlijke personen"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2041,27 +2149,42 @@
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-bzk-01 a :Requirement ;
     rdfs:label "Impactvolle algoritmes en hoog-risico-AI-systemen staan in het Nederlandse Algoritmeregister"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-implementatie,
         :stage-monitoring-en-beheer ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-34 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een monitoringsysteem"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-arc-01 a :Requirement ;
     rdfs:label "Informatie over algoritmes wordt in goede, geordende en toegankelijke staat gebracht, bewaard en vernietigd wanneer nodig"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2069,30 +2192,44 @@
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwikkelen,
         :stage-uitfaseren ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-dat-01 a :Requirement ;
     rdfs:label "Databanken worden alleen gebruikt met toestemming van de databank-producent"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist .
 
 :requirement-aia-18 a :Requirement ;
     rdfs:label "Als een hoog-risico-AI-systeem niet voldoet aan de AI-verordening, grijpt de aanbieder in"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-28 a :Requirement ;
     rdfs:label "AI-systemen worden zo ontworpen en gebruikt, dat mensen begrijpen wanneer zij met een AI-systeem communiceren en welke content gemaakt is door een AI-systeem"@nl ;
+    :appliesToRiskGroup :riskgroup-high,
+        :riskgroup-not-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
@@ -2105,33 +2242,51 @@
 
 :requirement-avg-01 a :Requirement ;
     rdfs:label "Persoonsgegevens worden op een rechtmatige manier verwerkt"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-avg-09 a :Requirement ;
     rdfs:label "Betrokkenen kunnen een beroep doen op hun privacyrechten"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-ontwikkelen,
         :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar .
 
 :requirement-avg-11 a :Requirement ;
     rdfs:label "Ontwerp en standaardinstellingen (defaults) zijn zo gunstig mogelijk voor de privacy van betrokkenen"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-jurist,
         :role-ontwikkelaar,
@@ -2139,68 +2294,102 @@
 
 :requirement-aia-11 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een kwaliteitsbeheersysteem"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aia-06 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van voldoende technische documentatie"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwikkelen,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-21 a :Requirement ;
     rdfs:label "Menselijk toezicht van hoog-risico-AI-systemen wordt uitgevoerd door mensen met voldoende kennis en mogelijkheden"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-27 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen voor publieke taken worden beoordeeld op gevolgen voor grondrechten"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-ontwerp,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aut-01 a :Requirement ;
     rdfs:label "Auteursrechten zijn beschermd"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist .
 
 :requirement-avg-07 a :Requirement ;
     rdfs:label "Organisaties zijn transparant over het verwerken van persoonsgegevens"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-implementatie,
         :stage-monitoring-en-beheer ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-10 a :Requirement ;
     rdfs:label "Besluiten met rechtsgevolgen of aanmerkelijke effecten zijn niet volledig geautomatiseerd"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-implementatie,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-awb-02 a :Requirement ;
     rdfs:label "Organisaties kunnen duidelijk uitleggen waarom en hoe algoritmes leiden tot een besluit"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2208,54 +2397,80 @@
     :appliesToStage :stage-implementatie,
         :stage-monitoring-en-beheer,
         :stage-ontwerp ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-03 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een risicobeheersysteem"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-09 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen staan onder menselijk toezicht"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-01 a :Requirement ;
     rdfs:label "Personeel en gebruikers zijn voldoende AI-geletterd"@nl ;
+    :appliesToRiskGroup :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-08 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn op een transparante manier ontwikkeld en ontworpen"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-12 a :Requirement ;
     rdfs:label "Data zoals persoonsgegevens zijn voldoende beveiligd tegen ongelukken en cyberaanvallen"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-ontwikkelaar .
 
 :requirement-grw-02 a :Requirement ;
     rdfs:label "Algoritmes discrimineren niet"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2264,10 +2479,16 @@
         :stage-ontwerp,
         :stage-ontwikkelen,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-grw-01 a :Requirement ;
     rdfs:label "Algoritmes schenden geen grondrechten of mensenrechten"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2276,45 +2497,66 @@
         :stage-ontwerp,
         :stage-probleemanalyse,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-aia-05 a :Requirement ;
     rdfs:label "Datasets voor hoog-risico-AI-systemen voldoen aan kwaliteitscriteria"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-22 a :Requirement ;
     rdfs:label "De werking van hoog-risico-AI-systemen wordt gemonitord"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-monitoring-en-beheer ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-projectleider .
 
 :requirement-bio-01 a :Requirement ;
     rdfs:label "Computersystemen zijn voldoende beveiligd tegen ongelukken en cyberaanvallen"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
         :role-importeur ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar .
 
 :requirement-aia-10 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voldoende nauwkeurig, robuust en cyberveilig"@nl ;
+    :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-ontwikkelen ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-awb-01 a :Requirement ;
     rdfs:label "Organisaties die algoritmes gebruiken voor publieke taken nemen besluiten zorgvuldig"@nl ;
+    :appliesToRiskGroup :riskgroup-exception,
+        :riskgroup-high,
+        :riskgroup-not-high,
+        :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
         :role-gebruiksverantwoordelijke,
@@ -2322,6 +2564,8 @@
     :appliesToStage :stage-ontwerp,
         :stage-ontwikkelen,
         :stage-verificatie-en-validatie ;
+    :appliesToTransparencyStatus :transparency-not-required,
+        :transparency-required ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 

@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance> .
+@base <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/> .
 
 <http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance> rdf:type owl:Ontology ;
                                                                                owl:imports <http://www.w3.org/2004/02/skos/core> ;
@@ -17,84 +17,92 @@
 ###  http://www.w3.org/2004/02/skos/core#definition
 <http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
 
+:csvValue rdf:type owl:AnnotationProperty ;
+          rdfs:comment "The value this individual stands for in the Algoritmekader csv files"@en .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#appliesToStage
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRiskGroup
+:appliesToRiskGroup rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Requirement ;
+                    rdfs:range :RiskGroup .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRole
+:appliesToRole rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Requirement ;
+               rdfs:range :AIActRole .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToStage
 :appliesToStage rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#hasRiskGroup
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToTransparancyStatus
+:appliesToTransparencyStatus rdf:type owl:ObjectProperty ;
+                             rdfs:domain :Requirement ;
+                             rdfs:range :TransparencyStatus .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/derivedFrom
+:derivedFrom rdf:type owl:ObjectProperty ;
+             rdfs:domain :Requirement ;
+             rdfs:range :LegalSource .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/hasRiskGroup
 :hasRiskGroup rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain :AISystem ;
               rdfs:range :RiskGroup .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#relevantForRole
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/implements
+:implements rdf:type owl:ObjectProperty ;
+            rdfs:domain :Measure ;
+            rdfs:range :Requirement .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/relevantForRole
 :relevantForRole rdf:type owl:ObjectProperty ;
                  rdfs:range :AlgoritmekaderRole .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#supportsRequirement
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/supportsMeasure
+:supportsMeasure rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Tool ;
+                 rdfs:range :Measure .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/supportsRequirement
 :supportsRequirement rdf:type owl:ObjectProperty ;
                      rdfs:domain :Tool ;
                      rdfs:range :Requirement .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#typicallyFollowedBy
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/typicallyFollowedBy
 :typicallyFollowedBy rdf:type owl:ObjectProperty ;
                      rdfs:domain :LifecycleStage ;
                      rdfs:range :LifecycleStage .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRiskGroup
-:appliesToRiskGroup rdf:type owl:ObjectProperty ;
-                        rdfs:domain :Requirement ;
-                        rdfs:range :RiskGroup .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRole
-:appliesToRole rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf owl:topObjectProperty ;
-                   rdfs:domain :Requirement ;
-                   rdfs:range :AIActRole .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/derivedFrom
-:derivedFrom rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Requirement ;
-                 rdfs:range :LegalSource .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/implements
-:implements rdf:type owl:ObjectProperty ;
-                rdfs:domain :Measure ;
-                rdfs:range :Requirement .
-
-
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/supportsMeasure
-:supportsMeasure rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf owl:topObjectProperty ;
-                     rdfs:domain :Tool ;
-                     rdfs:range :Measure .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#rank
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/rank
 :rank rdf:type owl:DatatypeProperty ,
                owl:FunctionalProperty ;
       rdfs:domain :RiskGroup ;
       rdfs:range xsd:integer .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stageNumber
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stageNumber
 :stageNumber rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdf:type owl:FunctionalProperty ;
@@ -106,52 +114,48 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#Role
-:Role rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AIActRole
 :AIActRole rdf:type owl:Class ;
-               owl:equivalentClass [ rdf:type owl:Class ;
-                                     owl:oneOf ( :role-aanbieder
-                                                 :role-distributeur
-                                                 :role-gebruiksverantwoordelijke
-                                                 :role-gemachtigde
-                                                 :role-importeur
-                                                 :role-productfabrikant
-                                               )
-                                   ] ;
-               rdfs:subClassOf :Role ;
-               owl:disjointWith :AlgoritmekaderRole ;
-               rdfs:label "Rol AI Act"@nl ,
-                          "Role AI Act"@en .
+           owl:equivalentClass [ rdf:type owl:Class ;
+                                 owl:oneOf ( :role-aanbieder
+                                             :role-distributeur
+                                             :role-gebruiksverantwoordelijke
+                                             :role-gemachtigde
+                                             :role-importeur
+                                             :role-productfabrikant
+                                           )
+                               ] ;
+           rdfs:subClassOf :Role ;
+           owl:disjointWith :AlgoritmekaderRole ;
+           rdfs:label "Rol AI Act"@nl ,
+                      "Role AI Act"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AISystem
 :AISystem rdf:type owl:Class ;
-              rdfs:label "AI Systeem"@nl ,
-                         "AI System"@en .
+          rdfs:label "AI Systeem"@nl ,
+                     "AI System"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AlgoritmekaderRole
 :AlgoritmekaderRole rdf:type owl:Class ;
-                        owl:equivalentClass [ rdf:type owl:Class ;
-                                              owl:oneOf ( :role-beleid-en-advies
-                                                          :role-jurist
-                                                          :role-ontwikkelaar
-                                                          :role-projectleider
-                                                        )
-                                            ] ;
-                        rdfs:subClassOf :Role ;
-                        rdfs:label "Algoritmekader role"@en .
+                    owl:equivalentClass [ rdf:type owl:Class ;
+                                          owl:oneOf ( :role-beleid-en-advies
+                                                      :role-jurist
+                                                      :role-ontwikkelaar
+                                                      :role-projectleider
+                                                    )
+                                        ] ;
+                    rdfs:subClassOf :Role ;
+                    rdfs:label "Algoritmekader role"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AssessmentFramework
 :AssessmentFramework rdf:type owl:Class ;
-                         rdfs:subClassOf :Tool ;
-                         rdfs:comment "CSV value: toetsingskader" ;
-                         rdfs:label "Assessment Framework"@en ,
-                                    "Toetsingskader"@nl .
+                     rdfs:subClassOf :Tool ;
+                     rdfs:comment "CSV value: toetsingskader" ;
+                     rdfs:label "Assessment Framework"@en ,
+                                "Toetsingskader"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Document
@@ -160,171 +164,197 @@
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Factsheet
 :Factsheet rdf:type owl:Class ;
-               rdfs:subClassOf :Tool ;
-               rdfs:comment "CSV value: factsheet" ;
-               rdfs:label "Factsheet"@en ,
-                          "Factsheet"@nl .
+           rdfs:subClassOf :Tool ;
+           rdfs:comment "CSV value: factsheet" ;
+           rdfs:label "Factsheet"@en ,
+                      "Factsheet"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/GovernanceObligation
 :GovernanceObligation rdf:type owl:Class ;
-                          rdfs:subClassOf :Requirement .
+                      rdfs:subClassOf :Requirement .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Guidance
 :Guidance rdf:type owl:Class ;
-              rdfs:subClassOf :Tool ;
-              rdfs:comment "CSV value: handreiking" ;
-              rdfs:label "Guidance"@en ,
-                         "Handreiking"@nl .
+          rdfs:subClassOf :Tool ;
+          rdfs:comment "CSV value: handreiking" ;
+          rdfs:label "Guidance"@en ,
+                     "Handreiking"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/ImpactAssessment
 :ImpactAssessment rdf:type owl:Class ;
-                      rdfs:subClassOf :Tool ;
-                      rdfs:comment "CSV value: impact-assessment" ;
-                      rdfs:label "Impact Assessment"@en ,
-                                 "Impact Assessment"@nl .
+                  rdfs:subClassOf :Tool ;
+                  rdfs:comment "CSV value: impact-assessment" ;
+                  rdfs:label "Impact Assessment"@en ,
+                             "Impact Assessment"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/LegalObligation
 :LegalObligation rdf:type owl:Class ;
-                     rdfs:subClassOf :Requirement .
+                 rdfs:subClassOf :Requirement .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/LegalSource
 :LegalSource rdf:type owl:Class ;
-                 rdfs:label "Legal Source"@en ,
-                            "Wettelijke bron"@nl .
+             rdfs:label "Legal Source"@en ,
+                        "Wettelijke bron"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/LifecycleStage
 :LifecycleStage rdf:type owl:Class ;
-                    owl:equivalentClass [ rdf:type owl:Class ;
-                                          owl:oneOf ( :stage-dataverkenning-en-datapreparatie
-                                                      :stage-implementatie
-                                                      :stage-monitoring-en-beheer
-                                                      :stage-ontwerp
-                                                      :stage-ontwikkelen
-                                                      :stage-organisatieverantwoordelijkheden
-                                                      :stage-probleemanalyse
-                                                      :stage-uitfaseren
-                                                      :stage-verificatie-en-validatie
-                                                    )
-                                        ] ;
-                    rdfs:label "Levenscyclusfase"@nl ,
-                               "Lifecycle Stage"@en .
+                owl:equivalentClass [ rdf:type owl:Class ;
+                                      owl:oneOf ( :stage-dataverkenning-en-datapreparatie
+                                                  :stage-implementatie
+                                                  :stage-monitoring-en-beheer
+                                                  :stage-ontwerp
+                                                  :stage-ontwikkelen
+                                                  :stage-organisatieverantwoordelijkheden
+                                                  :stage-probleemanalyse
+                                                  :stage-uitfaseren
+                                                  :stage-verificatie-en-validatie
+                                                )
+                                    ] ;
+                rdfs:label "Levenscyclusfase"@nl ,
+                           "Lifecycle Stage"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Measure
 :Measure rdf:type owl:Class ;
-             rdfs:label "Maatregel"@nl ,
-                        "Measure"@en .
+         rdfs:label "Maatregel"@nl ,
+                    "Measure"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Register
 :Register rdf:type owl:Class ;
-              rdfs:subClassOf :Tool ;
-              rdfs:comment "CSV value: register" ;
-              rdfs:label "Register"@nl ,
-                         "Registry"@en .
+          rdfs:subClassOf :Tool ;
+          rdfs:comment "CSV value: register" ;
+          rdfs:label "Register"@nl ,
+                     "Registry"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Requirement
 :Requirement rdf:type owl:Class ;
-                 rdfs:label "Requirement"@en ,
-                            "Vereiste"@nl .
+             rdfs:label "Requirement"@en ,
+                        "Vereiste"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/RiskGroup
 :RiskGroup rdf:type owl:Class ;
-               owl:equivalentClass [ rdf:type owl:Class ;
-                                     owl:oneOf ( :riskgroup-high
-                                                 :riskgroup-limited
-                                                 :riskgroup-minimal
-                                                 :riskgroup-unacceptable
-                                               )
-                                   ] ;
-               rdfs:comment "Valt je AI-systeem onder een risicogroep uit de Europese AI-verordening, dan gelden speciale regels. Hoe groter het risico voor de samenleving, hoe strenger de regels. Het hangt ervan af waarvoor je het AI-systeem gebruikt."@nl ;
-               rdfs:label "Risico Groep"@nl ,
-                          "Risk Group"@en .
+           owl:equivalentClass [ rdf:type owl:Class ;
+                                 owl:oneOf ( :riskgroup-high
+                                             :riskgroup-not-high
+                                             :riskgroup-prohibited
+                                             :riskgroup-transparency-required
+                                             :riskgroup-exception
+                                           )
+                               ] ;
+           rdfs:comment "Valt je AI-systeem onder een risicogroep uit de Europese AI-verordening, dan gelden speciale regels. Hoe groter het risico voor de samenleving, hoe strenger de regels. Het hangt ervan af waarvoor je het AI-systeem gebruikt."@nl ;
+           rdfs:label "Risico Groep"@nl ,
+                      "Risk Group"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Roadmap
 :Roadmap rdf:type owl:Class ;
-             rdfs:subClassOf :Tool ;
-             rdfs:comment "CSV value: roadmap" ;
-             rdfs:label "Roadmap"@en ,
-                        "Roadmap"@nl .
+         rdfs:subClassOf :Tool ;
+         rdfs:comment "CSV value: roadmap" ;
+         rdfs:label "Roadmap"@en ,
+                    "Roadmap"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Role
+:Role rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/SelfAssessment
 :SelfAssessment rdf:type owl:Class ;
-                    rdfs:subClassOf :Tool ;
-                    rdfs:comment "CSV value: self-assessment" ;
-                    rdfs:label "Self-Assessment"@en ,
-                               "Self-Assessment"@nl .
+                rdfs:subClassOf :Tool ;
+                rdfs:comment "CSV value: self-assessment" ;
+                rdfs:label "Self-Assessment"@en ,
+                           "Self-Assessment"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Standard
 :Standard rdf:type owl:Class ;
-              rdfs:subClassOf :Tool ;
-              rdfs:comment "CSV value: standaard" ;
-              rdfs:label "Standaard"@nl ,
-                         "Standard"@en .
+          rdfs:subClassOf :Tool ;
+          rdfs:comment "CSV value: standaard" ;
+          rdfs:label "Standaard"@nl ,
+                     "Standard"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/SubjectAK
 :SubjectAK rdf:type owl:Class ;
-               rdfs:label "Onderwerp Algoritmekader"@nl ,
-                          "Subject Algoritmekader"@en .
+           rdfs:label "Onderwerp Algoritmekader"@nl ,
+                      "Subject Algoritmekader"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Template
 :Template rdf:type owl:Class ;
-              rdfs:subClassOf :Tool ;
-              rdfs:comment "CSV value: template" ;
-              rdfs:label "Template"@en ,
-                         "Template"@nl .
+          rdfs:subClassOf :Tool ;
+          rdfs:comment "CSV value: template" ;
+          rdfs:label "Template"@en ,
+                     "Template"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/Tool
 :Tool rdf:type owl:Class ;
-          rdfs:subClassOf :Document ;
-          rdfs:comment "This class denotes the 'Hulpmiddelen' as defined in the Algoritmekader"@en ;
-          rdfs:label "Hulpmiddel"@nl ,
-                     "Tool"@en .
+      rdfs:subClassOf :Document ;
+      rdfs:comment "This class denotes the 'Hulpmiddelen' as defined in the Algoritmekader"@en ;
+      rdfs:label "Hulpmiddel"@nl ,
+                 "Tool"@en .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/TransparencyStatus
+:TransparencyStatus rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#riskgroup-high
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-exception
+:riskgroup-exception rdf:type owl:NamedIndividual ,
+                              :RiskGroup ;
+                     rdfs:label "AI Act exception applies"@en ,
+                                "AI Verordening uitzondering van toepassing"@nl ;
+                     :csvValue "uitzondering-van-toepassing" .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-high
 :riskgroup-high rdf:type owl:NamedIndividual ,
                          :RiskGroup ;
-                :rank 3 .
+                :rank 3 ;
+                rdfs:label "High-Risk AI System"@en ,
+                           "Hoog-risico AI systeem"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#riskgroup-limited
-:riskgroup-limited rdf:type owl:NamedIndividual ,
-                            :RiskGroup ;
-                   :rank 2 .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-not-high
+:riskgroup-not-high rdf:type owl:NamedIndividual ,
+                             :RiskGroup ;
+                    :rank 1 ;
+                    rdfs:label "Geen hoog-risico AI systeem"@nl ,
+                               "Not a High-Risk AI System"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#riskgroup-minimal
-:riskgroup-minimal rdf:type owl:NamedIndividual ,
-                            :RiskGroup ;
-                   :rank 1 .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-prohibited
+:riskgroup-prohibited rdf:type owl:NamedIndividual ,
+                               :RiskGroup ;
+                      :rank 4 ;
+                      rdfs:label "Prohibited AI"@en ,
+                                 "Verboden AI"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#riskgroup-unacceptable
-:riskgroup-unacceptable rdf:type owl:NamedIndividual ,
-                                 :RiskGroup ;
-                        :rank 4 .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-transparency-required
+:riskgroup-transparency-required rdf:type owl:NamedIndividual ,
+                                          :RiskGroup ;
+                                 :rank 2 ;
+                                 rdfs:comment "This denotes a not high-risk system that does have transparancy requirements"@en ;
+                                 rdfs:label "Transparancy required (limited risk)"@en ,
+                                            "Transparantieverplichting (beperkt risico)"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-aanbieder
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-aanbieder
 :role-aanbieder rdf:type owl:NamedIndividual ,
                          :AIActRole ;
                 rdfs:comment "Een natuurlijke of rechtspersoon, overheidsinstantie, agentschap of ander orgaan die/dat een AI-systeem of een AI-model voor algemene doeleinden ontwikkelt of laat ontwikkelen en dat systeem of model in de handel brengt of het AI-systeem in gebruik stelt onder de eigen naam of merk, al dan niet tegen betaling."@nl ;
@@ -332,7 +362,7 @@
                            "Provider"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-beleid-en-advies
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-beleid-en-advies
 :role-beleid-en-advies rdf:type owl:NamedIndividual ,
                                 :AlgoritmekaderRole ;
                        rdfs:comment "Dit zijn professionals die ervoor zorgen dat de organisatie algoritmes verantwoord en volgens de beleidsdoelen ontwikkelt en inzet. Bijvoorbeeld een beleidsmedewerker, ethicus, CIO-adviseur of architect."@nl ;
@@ -340,14 +370,14 @@
                                   "Policy and Advisory"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-distributeur
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-distributeur
 :role-distributeur rdf:type owl:NamedIndividual ,
                             :AIActRole ;
                    rdfs:label "Distributeur"@nl ,
                               "Distributor"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-gebruiksverantwoordelijke
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-gebruiksverantwoordelijke
 :role-gebruiksverantwoordelijke rdf:type owl:NamedIndividual ,
                                          :AIActRole ;
                                 rdfs:comment "Een natuurlijke of rechtspersoon, overheidsinstantie, agentschap of ander orgaan die/dat een AI-systeem onder eigen verantwoordelijkheid gebruikt, tenzij het AI-systeem wordt gebruikt in het kader van een persoonlijke niet- beroepsactiviteit."@nl ;
@@ -355,7 +385,7 @@
                                            "Gebruiksverantwoordelijke"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-gemachtigde
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-gemachtigde
 :role-gemachtigde rdf:type owl:NamedIndividual ,
                            :AIActRole ;
                   rdfs:comment "Een natuurlijke of rechtspersoon die zich bevindt of gevestigd is in de Unie die een schriftelijke machtiging heeft gekregen en aanvaard van een aanbieder van een AI-systeem of een AI-model voor algemene doeleinden om namens die aanbieder de verplichtingen en procedures van deze verordening respectievelijk na te komen en uit te voeren."@nl ;
@@ -363,7 +393,7 @@
                              "Gemachtigde"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-importeur
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-importeur
 :role-importeur rdf:type owl:NamedIndividual ,
                          :AIActRole ;
                 rdfs:comment "Any natural or legal person established in the European Union that places on the market an AI system bearing the name or trademark of a person established outside the EU."@en ,
@@ -372,7 +402,7 @@
                            "Importeur"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-jurist
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-jurist
 :role-jurist rdf:type owl:NamedIndividual ,
                       :AlgoritmekaderRole ;
              rdfs:comment "Juristen zorgen ervoor dat de organisatie bij het ontwikkelen en gebruiken van algoritmes voldoet aan de wettelijke verplichtingen en beginselen van behoorlijk bestuur. Bijvoorbeeld een privacy-jurist, compliance-officer of functionaris gegevensbescherming (FG)."@nl ;
@@ -380,7 +410,7 @@
                         "Legal"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-ontwikkelaar
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-ontwikkelaar
 :role-ontwikkelaar rdf:type owl:NamedIndividual ,
                             :AlgoritmekaderRole ;
                    rdfs:comment "Ontwikkelaars zijn technische experts die ervoor zorgen dat algoritmes voldoen aan technische en ethische standaarden. Bijvoorbeeld een data-scientist, developer of informatieanalist."@nl ;
@@ -388,14 +418,14 @@
                               "Ontwikkelaar"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-productfabrikant
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-productfabrikant
 :role-productfabrikant rdf:type owl:NamedIndividual ,
                                 :AIActRole ;
                        rdfs:label "Product manufacturer"@en ,
                                   "Productfabrikant"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#role-projectleider
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/role-projectleider
 :role-projectleider rdf:type owl:NamedIndividual ,
                              :AlgoritmekaderRole ;
                     rdfs:comment "Projectleider verbinden de benodigde expertises en waarborgen alle stappen van het ontwikkelproces. Bijvoorbeeld een product-owner, proceseigenaar of IT-projectmanager."@nl ;
@@ -403,7 +433,7 @@
                                "Projectleider"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-dataverkenning-en-datapreparatie
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-dataverkenning-en-datapreparatie
 :stage-dataverkenning-en-datapreparatie rdf:type owl:NamedIndividual ,
                                                  :LifecycleStage ;
                                         :stageNumber 3 ;
@@ -411,7 +441,7 @@
                                                    "3. Dataverkenning en datapreparatie"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-implementatie
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-implementatie
 :stage-implementatie rdf:type owl:NamedIndividual ,
                               :LifecycleStage ;
                      :stageNumber 6 ;
@@ -419,7 +449,7 @@
                                 "6. Implementation"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-monitoring-en-beheer
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-monitoring-en-beheer
 :stage-monitoring-en-beheer rdf:type owl:NamedIndividual ,
                                      :LifecycleStage ;
                             :stageNumber 7 ;
@@ -427,7 +457,7 @@
                                        "7. Monitoring en beheer"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-ontwerp
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-ontwerp
 :stage-ontwerp rdf:type owl:NamedIndividual ,
                         :LifecycleStage ;
                :stageNumber 2 ;
@@ -435,7 +465,7 @@
                           "2. Ontwerp"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-ontwikkelen
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-ontwikkelen
 :stage-ontwikkelen rdf:type owl:NamedIndividual ,
                             :LifecycleStage ;
                    :stageNumber 4 ;
@@ -443,7 +473,7 @@
                               "4. Ontwikkelen"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-organisatieverantwoordelijkheden
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-organisatieverantwoordelijkheden
 :stage-organisatieverantwoordelijkheden rdf:type owl:NamedIndividual ,
                                                  :LifecycleStage ;
                                         :stageNumber 0 ;
@@ -451,7 +481,7 @@
                                                    "0. Organisational Responsibilities"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-probleemanalyse
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-probleemanalyse
 :stage-probleemanalyse rdf:type owl:NamedIndividual ,
                                 :LifecycleStage ;
                        :stageNumber 1 ;
@@ -459,7 +489,7 @@
                                   "1. Problem Analysis"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-uitfaseren
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-uitfaseren
 :stage-uitfaseren rdf:type owl:NamedIndividual ,
                            :LifecycleStage ;
                   :stageNumber 8 ;
@@ -467,7 +497,7 @@
                              "8. Uitfaseren"@nl .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#stage-verificatie-en-validatie
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/stage-verificatie-en-validatie
 :stage-verificatie-en-validatie rdf:type owl:NamedIndividual ,
                                          :LifecycleStage ;
                                 :stageNumber 5 ;
@@ -475,15 +505,30 @@
                                            "5. Verification and validation"@en .
 
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/transparency-not-required
+:transparency-not-required rdf:type owl:NamedIndividual ,
+                                    :TransparencyStatus ;
+                           rdfs:label "Geen transparantieverplichting"@nl ,
+                                      "No transparancy obligation"@en .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/transparency-required
+:transparency-required rdf:type owl:NamedIndividual ,
+                                :TransparencyStatus ;
+                       rdfs:label "Transparancy obligation"@en ,
+                                  "Transparantieverplichting"@nl .
+
+
 #################################################################
 #    General axioms
 #################################################################
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :riskgroup-high
-                        :riskgroup-limited
-                        :riskgroup-minimal
-                        :riskgroup-unacceptable
+  owl:distinctMembers ( :riskgroup-exception
+                        :riskgroup-high
+                        :riskgroup-not-high
+                        :riskgroup-prohibited
+                        :riskgroup-transparency-required
                         :role-aanbieder
                         :role-beleid-en-advies
                         :role-distributeur
@@ -503,6 +548,8 @@
                         :stage-probleemanalyse
                         :stage-uitfaseren
                         :stage-verificatie-en-validatie
+                        :transparency-not-required
+                        :transparency-required
                       )
 ] .
 
