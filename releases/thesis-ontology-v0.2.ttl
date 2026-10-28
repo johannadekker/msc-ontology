@@ -19,6 +19,9 @@
     rdfs:label "Subject Algoritmekader"@en,
         "Onderwerp Algoritmekader"@nl .
 
+:appliesToApplication a owl:ObjectProperty ;
+    rdfs:domain :Requirement .
+
 :appliesToRiskGroup a owl:ObjectProperty ;
     rdfs:domain :Requirement ;
     rdfs:range :RiskGroup .
@@ -44,7 +47,7 @@
 
 :hasRiskGroup a owl:FunctionalProperty,
         owl:ObjectProperty ;
-    rdfs:domain :AISystem ;
+    rdfs:domain :AIApplication ;
     rdfs:range :RiskGroup .
 
 :implements a owl:ObjectProperty ;
@@ -676,6 +679,8 @@
 
 :requirement-aia-38 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn getest"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -684,15 +689,18 @@
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-39 a :Requirement ;
     rdfs:label "Er is beleid opgesteld ter naleving van auteursrechten en naburige rechten door aanbieders van AI-modellen voor algemene doeleinden"@nl ;
+    :appliesToApplication :GeneralPurposeAIModel ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-ontwikkelen ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :stageNumber a owl:DatatypeProperty,
@@ -1204,15 +1212,7 @@
 
 skos:definition a owl:AnnotationProperty .
 
-:AISystem a owl:Class ;
-    rdfs:label "AI System"@en,
-        "AI Systeem"@nl .
-
 :Document a owl:Class .
-
-:LegalSource a owl:Class ;
-    rdfs:label "Legal Source"@en,
-        "Wettelijke bron"@nl .
 
 :Roadmap a owl:Class ;
     rdfs:label "Roadmap"@en,
@@ -1507,6 +1507,9 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-woo-01 a :Requirement ;
     rdfs:label "Iedereen kan openbare informatie over algoritmes vinden of aanvragen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -1518,6 +1521,7 @@ skos:definition a owl:AnnotationProperty .
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-woo ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
@@ -1674,6 +1678,64 @@ skos:definition a owl:AnnotationProperty .
     :implements :requirement-awb-01 ;
     :relevantForRole :role-projectleider .
 
+:riskgroup-transparency-required a :RiskGroup,
+        owl:NamedIndividual ;
+    rdfs:label "Transparancy required (limited risk)"@en,
+        "Transparantieverplichting (beperkt risico)"@nl ;
+    :rank 2 ;
+    rdfs:comment "This denotes a not high-risk system that does have transparancy requirements"@en .
+
+:role-gemachtigde a :AIActRole,
+        owl:NamedIndividual ;
+    rdfs:label "Authorised representative"@en,
+        "Gemachtigde"@nl ;
+    rdfs:comment "Een natuurlijke of rechtspersoon die zich bevindt of gevestigd is in de Unie die een schriftelijke machtiging heeft gekregen en aanvaard van een aanbieder van een AI-systeem of een AI-model voor algemene doeleinden om namens die aanbieder de verplichtingen en procedures van deze verordening respectievelijk na te komen en uit te voeren."@nl .
+
+:role-productfabrikant a :AIActRole,
+        owl:NamedIndividual ;
+    rdfs:label "Product manufacturer"@en,
+        "Productfabrikant"@nl .
+
+:source-arc a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "Archive Law"@en,
+        "Archiefwet"@nl ;
+    :csvValue "arc" .
+
+:source-aut a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "Copyright"@en,
+        "Auteursrechten"@nl ;
+    :csvValue "aut" .
+
+:source-bio a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "Baseline Information Security for Government"@en,
+        "Baseline informatiebeveiliging overheid"@nl ;
+    :csvValue "bio" .
+
+:source-bzk a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "Algorithm register"@en,
+        "Algoritmeregister"@nl ;
+    :csvValue "bzk" .
+
+:source-dat a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "Database Act"@en,
+        "Databankenwet"@nl ;
+    :csvValue "dat" .
+
+:source-woo a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "Open Government Act"@en,
+        "Wet open overheid"@nl ;
+    :csvValue "woo" .
+
+:AIApplication a owl:Class ;
+    rdfs:label "AI Application"@en,
+        "AI Applicatie"@nl .
+
 :TransparencyStatus a owl:Class .
 
 :measure-dat-01 a :Measure ;
@@ -1806,6 +1868,9 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-00 a :Requirement ;
     rdfs:label "Verboden AI mag niet worden gebruikt"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-prohibited ;
     :appliesToRole :role-aanbieder,
         :role-distributeur,
@@ -1815,25 +1880,20 @@ skos:definition a owl:AnnotationProperty .
         :stage-probleemanalyse ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
-:riskgroup-transparency-required a :RiskGroup,
+:source-awb a :LegalSource,
         owl:NamedIndividual ;
-    rdfs:label "Transparancy required (limited risk)"@en,
-        "Transparantieverplichting (beperkt risico)"@nl ;
-    :rank 2 ;
-    rdfs:comment "This denotes a not high-risk system that does have transparancy requirements"@en .
+    rdfs:label "General Administrative Law Act"@en,
+        "Algemene wet bestuursrecht"@nl ;
+    :csvValue "awb" .
 
-:role-gemachtigde a :AIActRole,
+:source-grw a :LegalSource,
         owl:NamedIndividual ;
-    rdfs:label "Authorised representative"@en,
-        "Gemachtigde"@nl ;
-    rdfs:comment "Een natuurlijke of rechtspersoon die zich bevindt of gevestigd is in de Unie die een schriftelijke machtiging heeft gekregen en aanvaard van een aanbieder van een AI-systeem of een AI-model voor algemene doeleinden om namens die aanbieder de verplichtingen en procedures van deze verordening respectievelijk na te komen en uit te voeren."@nl .
-
-:role-productfabrikant a :AIActRole,
-        owl:NamedIndividual ;
-    rdfs:label "Product manufacturer"@en,
-        "Productfabrikant"@nl .
+    rdfs:label "Constitution"@en,
+        "Grondwet"@nl ;
+    :csvValue "grw" .
 
 :ImpactAssessment a owl:Class ;
     rdfs:label "Impact Assessment"@en,
@@ -1935,22 +1995,30 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-23 a :Requirement ;
     rdfs:label "Logs voor hoog-risico-AI-systemen worden bewaard door de gebruiksverantwoordelijke"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-31 a :Requirement ;
     rdfs:label "Als AI-modellen voor algemene doeleinden met systeemrisico’s ernstige incidenten veroorzaken, wordt dit gedocumenteerd en gerapporteerd"@nl ;
+    :appliesToApplication :GeneralPurposeAIModel ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-36 a :Requirement ;
     rdfs:label "Klokkenluiders kunnen veilig melden dat een organisatie zich niet houdt aan de AI-verordening"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high,
         :riskgroup-not-high ;
     :appliesToRole :role-aanbieder,
@@ -1961,20 +2029,28 @@ skos:definition a owl:AnnotationProperty .
         :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-37 a :Requirement ;
     rdfs:label "Aanbieders van AI-systemen kunnen een klacht indienen over de aanbieder van hun AI-model"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high,
         :riskgroup-not-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-avg-08 a :Requirement ;
     rdfs:label "Gevoelige persoonsgegevens worden alleen gebruikt als hiervoor een wettelijke uitzondering geldt"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -1987,6 +2063,7 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-beleid-en-advies,
         :role-jurist,
         :role-projectleider .
@@ -2031,6 +2108,8 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-13 a :Requirement ;
     rdfs:label "Logs van hoog-risico-AI-systemen worden zes maanden bewaard door de aanbieder"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -2038,29 +2117,38 @@ skos:definition a owl:AnnotationProperty .
         :stage-uitfaseren ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-17 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn geregistreerd in de EU-databank"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-20 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen worden gebruikt volgens de gebruiksaanwijzing"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-implementatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aia-25 a :Requirement ;
     rdfs:label "Gebruiksverantwoordelijken controleren de registratie van het hoog-risico AI-systeem in de EU-databank"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-implementatie,
@@ -2068,37 +2156,48 @@ skos:definition a owl:AnnotationProperty .
         :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-29 a :Requirement ;
     rdfs:label "AI-modellen voor algemene doeleinden zijn voorzien van voldoende technische documentatie en informatie"@nl ;
+    :appliesToApplication :GeneralPurposeAIModel ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-ontwikkelen ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-30 a :Requirement ;
     rdfs:label "Aanbieders van AI-modellen voor algemene doeleinden met een systeemrisico treffen extra maatregelen"@nl ;
+    :appliesToApplication :GeneralPurposeAIModel ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp,
         :stage-verificatie-en-validatie ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-35 a :Requirement ;
     rdfs:label "Ernstige incidenten door hoog-risico-AI-systemen worden gemeld aan de toezichthouder"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-avg-06 a :Requirement ;
     rdfs:label "Organisaties kunnen bewijzen dat zij persoonsgegevens op de juiste manier verwerken"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2111,6 +2210,7 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-jurist .
 
 :AIActRole a owl:Class ;
@@ -2123,35 +2223,46 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-15 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een EU-conformiteitsverklaring"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie,
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-aia-16 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een CE-markering"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-24 a :Requirement ;
     rdfs:label "Werknemers weten dat hun organisatie een hoog-risico AI-systeem gebruikt"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-implementatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-26 a :Requirement ;
     rdfs:label "Mensen over wie besluiten worden genomen door een hoog-risico-AI-systemen, krijgen op verzoek informatie over deze besluiten"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -2159,10 +2270,14 @@ skos:definition a owl:AnnotationProperty .
         :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-avg-03 a :Requirement ;
     rdfs:label "Persoonsgegevens worden zo min mogelijk verwerkt"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2176,6 +2291,7 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-jurist,
         :role-ontwikkelaar .
 
@@ -2190,19 +2306,24 @@ skos:definition a owl:AnnotationProperty .
         "Risico Groep"@nl ;
     rdfs:comment "Valt je AI-systeem onder een risicogroep uit de Europese AI-verordening, dan gelden speciale regels. Hoe groter het risico voor de samenleving, hoe strenger de regels. Het hangt ervan af waarvoor je het AI-systeem gebruikt."@nl ;
     owl:equivalentClass [ a owl:Class ;
-            owl:oneOf ( :riskgroup-high :riskgroup-not-high :riskgroup-prohibited :riskgroup-transparency-required :riskgroup-exception ) ] .
+            owl:oneOf ( :riskgroup-exception :riskgroup-high :riskgroup-not-high :riskgroup-prohibited :riskgroup-transparency-required ) ] .
 
 :requirement-aia-02 a :Requirement ;
     rdfs:label "Beoordeling als niet 'hoog-risico-AI-systeem' is gedocumenteerd"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-not-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-12 a :Requirement ;
     rdfs:label "Documentatie over hoog-risico-AI-systemen wordt 10 jaar bewaard door de aanbieder"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -2210,6 +2331,7 @@ skos:definition a owl:AnnotationProperty .
         :stage-uitfaseren ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :measure-org-02 a :Measure ;
@@ -2226,49 +2348,64 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-04 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen vormen geen risico voor kwetsbare groepen zoals kinderen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aia-07 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen loggen automatisch bepaalde gegevens"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-14 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen worden pas geleverd of gebruikt na een conformiteitsbeoordelingsprocedure"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie,
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-aia-19 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen voldoen aan de toegankelijkheidseisen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-02 a :Requirement ;
     rdfs:label "Persoonsgegevens worden zo kort mogelijk bewaard"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2282,11 +2419,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-uitfaseren ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar .
 
 :requirement-avg-04 a :Requirement ;
     rdfs:label "Persoonsgegevens en andere data verwerken gebeurt proportioneel en subsidiair"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2299,11 +2440,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-jurist,
         :role-ontwikkelaar .
 
 :requirement-avg-05 a :Requirement ;
     rdfs:label "Persoonsgegevens zijn juist en actueel"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2315,11 +2460,15 @@ skos:definition a owl:AnnotationProperty .
     :appliesToStage :stage-dataverkenning-en-datapreparatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-13 a :Requirement ;
     rdfs:label "Een gegevensbeschermingseffectbeoordeling (DPIA) is verplicht, indien een verwerking van persoonsgegevens waarschijnlijk een hoog risico inhoudt voor de rechten en vrijheden van natuurlijke personen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2333,11 +2482,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-bzk-01 a :Requirement ;
     rdfs:label "Impactvolle algoritmes en hoog-risico-AI-systemen staan in het Nederlandse Algoritmeregister"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2350,19 +2503,32 @@ skos:definition a owl:AnnotationProperty .
         :stage-monitoring-en-beheer ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-bzk ;
     :relevantForRole :role-projectleider .
+
+:stage-uitfaseren a :LifecycleStage,
+        owl:NamedIndividual ;
+    rdfs:label "8. Decommissioning"@en,
+        "8. Uitfaseren"@nl ;
+    :stageNumber 8 .
 
 :requirement-aia-34 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een monitoringsysteem"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-arc-01 a :Requirement ;
     rdfs:label "Informatie over algoritmes wordt in goede, geordende en toegankelijke staat gebracht, bewaard en vernietigd wanneer nodig"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2376,11 +2542,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-uitfaseren ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-arc ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-dat-01 a :Requirement ;
     rdfs:label "Databanken worden alleen gebruikt met toestemming van de databank-producent"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2392,13 +2562,12 @@ skos:definition a owl:AnnotationProperty .
     :appliesToStage :stage-dataverkenning-en-datapreparatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-dat ;
     :relevantForRole :role-jurist .
 
-:stage-uitfaseren a :LifecycleStage,
-        owl:NamedIndividual ;
-    rdfs:label "8. Decommissioning"@en,
-        "8. Uitfaseren"@nl ;
-    :stageNumber 8 .
+:LegalSource a owl:Class ;
+    rdfs:label "Legal Source"@en,
+        "Wettelijke bron"@nl .
 
 :LifecycleStage a owl:Class ;
     rdfs:label "Lifecycle Stage"@en,
@@ -2408,34 +2577,45 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-18 a :Requirement ;
     rdfs:label "Als een hoog-risico-AI-systeem niet voldoet aan de AI-verordening, grijpt de aanbieder in"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-28 a :Requirement ;
     rdfs:label "AI-systemen worden zo ontworpen en gebruikt, dat mensen begrijpen wanneer zij met een AI-systeem communiceren en welke content gemaakt is door een AI-systeem"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high,
         :riskgroup-not-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-implementatie,
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-32 a :Requirement ;
     rdfs:label "AI-modellen voor algemene doeleinden met systeemrisico’s zijn voldoende beveiligd tegen cyberaanvallen"@nl ;
+    :appliesToApplication :GeneralPurposeAIModel ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
         :stage-ontwikkelen ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar .
 
 :requirement-avg-01 a :Requirement ;
     rdfs:label "Persoonsgegevens worden op een rechtmatige manier verwerkt"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2448,11 +2628,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-avg-09 a :Requirement ;
     rdfs:label "Betrokkenen kunnen een beroep doen op hun privacyrechten"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2465,10 +2649,14 @@ skos:definition a owl:AnnotationProperty .
         :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-ontwikkelaar .
 
 :requirement-avg-11 a :Requirement ;
     rdfs:label "Ontwerp en standaardinstellingen (defaults) zijn zo gunstig mogelijk voor de privacy van betrokkenen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2481,6 +2669,7 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-beleid-en-advies,
         :role-jurist,
         :role-ontwikkelaar,
@@ -2488,16 +2677,21 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-aia-11 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een kwaliteitsbeheersysteem"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aia-06 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van voldoende technische documentatie"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
@@ -2505,31 +2699,41 @@ skos:definition a owl:AnnotationProperty .
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-21 a :Requirement ;
     rdfs:label "Menselijk toezicht van hoog-risico-AI-systemen wordt uitgevoerd door mensen met voldoende kennis en mogelijkheden"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-27 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen voor publieke taken worden beoordeeld op gevolgen voor grondrechten"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-ontwerp,
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-aut-01 a :Requirement ;
     rdfs:label "Auteursrechten zijn beschermd"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2542,10 +2746,14 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aut ;
     :relevantForRole :role-jurist .
 
 :requirement-avg-07 a :Requirement ;
     rdfs:label "Organisaties zijn transparant over het verwerken van persoonsgegevens"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2558,11 +2766,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-monitoring-en-beheer ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-10 a :Requirement ;
     rdfs:label "Besluiten met rechtsgevolgen of aanmerkelijke effecten zijn niet volledig geautomatiseerd"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2575,11 +2787,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
 :requirement-awb-02 a :Requirement ;
     rdfs:label "Organisaties kunnen duidelijk uitleggen waarom en hoe algoritmes leiden tot een besluit"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2593,20 +2809,26 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwerp ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-awb ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-03 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voorzien van een risicobeheersysteem"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-09 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen staan onder menselijk toezicht"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -2614,10 +2836,14 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-aia-01 a :Requirement ;
     rdfs:label "Personeel en gebruikers zijn voldoende AI-geletterd"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high,
         :riskgroup-not-high,
         :riskgroup-prohibited ;
@@ -2628,10 +2854,19 @@ skos:definition a owl:AnnotationProperty .
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
+
+:source-avg a :LegalSource,
+        owl:NamedIndividual ;
+    rdfs:label "General Data Protection Regulation"@en,
+        "Algemene verordening gegevensbescherming"@nl ;
+    :csvValue "avg" .
 
 :requirement-aia-08 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn op een transparante manier ontwikkeld en ontworpen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -2639,12 +2874,16 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-avg-12 a :Requirement ;
     rdfs:label "Data zoals persoonsgegevens zijn voldoende beveiligd tegen ongelukken en cyberaanvallen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2656,11 +2895,15 @@ skos:definition a owl:AnnotationProperty .
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-avg ;
     :relevantForRole :role-jurist,
         :role-ontwikkelaar .
 
 :requirement-grw-02 a :Requirement ;
     rdfs:label "Algoritmes discrimineren niet"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2675,10 +2918,14 @@ skos:definition a owl:AnnotationProperty .
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-grw ;
     :relevantForRole :role-projectleider .
 
 :requirement-grw-01 a :Requirement ;
     rdfs:label "Algoritmes schenden geen grondrechten of mensenrechten"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2693,31 +2940,41 @@ skos:definition a owl:AnnotationProperty .
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-grw ;
     :relevantForRole :role-jurist,
         :role-projectleider .
 
 :requirement-aia-05 a :Requirement ;
     rdfs:label "Datasets voor hoog-risico-AI-systemen voldoen aan kwaliteitscriteria"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-dataverkenning-en-datapreparatie,
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-ontwikkelaar,
         :role-projectleider .
 
 :requirement-aia-22 a :Requirement ;
     rdfs:label "De werking van hoog-risico-AI-systemen wordt gemonitord"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-gebruiksverantwoordelijke ;
     :appliesToStage :stage-monitoring-en-beheer ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-projectleider .
 
 :requirement-bio-01 a :Requirement ;
     rdfs:label "Computersystemen zijn voldoende beveiligd tegen ongelukken en cyberaanvallen"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2729,14 +2986,9 @@ skos:definition a owl:AnnotationProperty .
     :appliesToStage :stage-organisatieverantwoordelijkheden ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-bio ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar .
-
-:riskgroup-exception a :RiskGroup,
-        owl:NamedIndividual ;
-    rdfs:label "AI Act exception applies"@en,
-        "AI Verordening uitzondering van toepassing"@nl ;
-    :csvValue "uitzondering-van-toepassing" .
 
 :stage-probleemanalyse a :LifecycleStage,
         owl:NamedIndividual ;
@@ -2744,8 +2996,22 @@ skos:definition a owl:AnnotationProperty .
         "1. Probleemanalyse"@nl ;
     :stageNumber 1 .
 
+:riskgroup-exception a :RiskGroup,
+        owl:NamedIndividual ;
+    rdfs:label "AI Act exception applies"@en,
+        "AI Verordening uitzondering van toepassing"@nl ;
+    :csvValue "uitzondering-van-toepassing" .
+
+:riskgroup-prohibited a :RiskGroup,
+        owl:NamedIndividual ;
+    rdfs:label "Prohibited AI"@en,
+        "Verboden AI"@nl ;
+    :rank 4 .
+
 :requirement-aia-10 a :Requirement ;
     rdfs:label "Hoog-risico-AI-systemen zijn voldoende nauwkeurig, robuust en cyberveilig"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-high ;
     :appliesToRole :role-aanbieder ;
     :appliesToStage :stage-monitoring-en-beheer,
@@ -2753,15 +3019,10 @@ skos:definition a owl:AnnotationProperty .
         :stage-ontwikkelen ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-aia ;
     :relevantForRole :role-beleid-en-advies,
         :role-ontwikkelaar,
         :role-projectleider .
-
-:riskgroup-prohibited a :RiskGroup,
-        owl:NamedIndividual ;
-    rdfs:label "Prohibited AI"@en,
-        "Verboden AI"@nl ;
-    :rank 4 .
 
 :role-distributeur a :AIActRole,
         owl:NamedIndividual ;
@@ -2781,6 +3042,12 @@ skos:definition a owl:AnnotationProperty .
         "Geen hoog-risico AI systeem"@nl ;
     :rank 1 .
 
+:GeneralPurposeAIModel a owl:Class ;
+    rdfs:label "General Purpose AI Model"@en,
+        "AI model voor algemene doeleinden"@nl ;
+    :csvValue "ai-model-voor-algemene-doeleinden" ;
+    rdfs:subClassOf :AIApplication .
+
 :stage-dataverkenning-en-datapreparatie a :LifecycleStage,
         owl:NamedIndividual ;
     rdfs:label "3. Data Exploration and Data Preparation"@en,
@@ -2799,6 +3066,12 @@ skos:definition a owl:AnnotationProperty .
         "Gebruiksverantwoordelijke"@nl ;
     rdfs:comment "Een natuurlijke of rechtspersoon, overheidsinstantie, agentschap of ander orgaan die/dat een AI-systeem onder eigen verantwoordelijkheid gebruikt, tenzij het AI-systeem wordt gebruikt in het kader van een persoonlijke niet- beroepsactiviteit."@nl .
 
+:stage-implementatie a :LifecycleStage,
+        owl:NamedIndividual ;
+    rdfs:label "6. Implementation"@en,
+        "6. Implementatie"@nl ;
+    :stageNumber 6 .
+
 :Tool a owl:Class ;
     rdfs:label "Tool"@en,
         "Hulpmiddel"@nl ;
@@ -2807,6 +3080,9 @@ skos:definition a owl:AnnotationProperty .
 
 :requirement-awb-01 a :Requirement ;
     rdfs:label "Organisaties die algoritmes gebruiken voor publieke taken nemen besluiten zorgvuldig"@nl ;
+    :appliesToApplication :AISystem,
+        :GeneralPurposeAIModel,
+        :GeneralPurposeAISystem ;
     :appliesToRiskGroup :riskgroup-exception,
         :riskgroup-high,
         :riskgroup-not-high,
@@ -2820,14 +3096,15 @@ skos:definition a owl:AnnotationProperty .
         :stage-verificatie-en-validatie ;
     :appliesToTransparencyStatus :transparency-not-required,
         :transparency-required ;
+    :derivedFrom :source-awb ;
     :relevantForRole :role-beleid-en-advies,
         :role-projectleider .
 
-:stage-implementatie a :LifecycleStage,
+:source-aia a :LegalSource,
         owl:NamedIndividual ;
-    rdfs:label "6. Implementation"@en,
-        "6. Implementatie"@nl ;
-    :stageNumber 6 .
+    rdfs:label "AI Act"@en,
+        "AI Verordening"@nl ;
+    :csvValue "aia" .
 
 :stage-organisatieverantwoordelijkheden a :LifecycleStage,
         owl:NamedIndividual ;
@@ -2847,10 +3124,11 @@ skos:definition a owl:AnnotationProperty .
         "Aanbieder"@nl ;
     rdfs:comment "Een natuurlijke of rechtspersoon, overheidsinstantie, agentschap of ander orgaan die/dat een AI-systeem of een AI-model voor algemene doeleinden ontwikkelt of laat ontwikkelen en dat systeem of model in de handel brengt of het AI-systeem in gebruik stelt onder de eigen naam of merk, al dan niet tegen betaling."@nl .
 
-:transparency-not-required a :TransparencyStatus,
-        owl:NamedIndividual ;
-    rdfs:label "No transparancy obligation"@en,
-        "Geen transparantieverplichting"@nl .
+:GeneralPurposeAISystem a owl:Class ;
+    rdfs:label "General Purpose AI System"@en,
+        "AI systeem voor algemene doeleinden"@nl ;
+    :csvValue "ai-systeem-voor-algemene-doeleinden" ;
+    rdfs:subClassOf :AISystem .
 
 :riskgroup-high a :RiskGroup,
         owl:NamedIndividual ;
@@ -2864,20 +3142,31 @@ skos:definition a owl:AnnotationProperty .
         "4. Ontwikkelen"@nl ;
     :stageNumber 4 .
 
+:transparency-not-required a :TransparencyStatus,
+        owl:NamedIndividual ;
+    rdfs:label "No transparancy obligation"@en,
+        "Geen transparantieverplichting"@nl .
+
+:AISystem a owl:Class ;
+    rdfs:label "AI systeem"@nl ;
+    :csvValue "ai-systeem",
+        "AI System"@en ;
+    rdfs:subClassOf :AIApplication .
+
 :transparency-required a :TransparencyStatus,
         owl:NamedIndividual ;
     rdfs:label "Transparancy obligation"@en,
         "Transparantieverplichting"@nl .
-
-:Requirement a owl:Class ;
-    rdfs:label "Requirement"@en,
-        "Vereiste"@nl .
 
 :stage-monitoring-en-beheer a :LifecycleStage,
         owl:NamedIndividual ;
     rdfs:label "7. Monitoring and Management"@en,
         "7. Monitoring en beheer"@nl ;
     :stageNumber 7 .
+
+:Requirement a owl:Class ;
+    rdfs:label "Requirement"@en,
+        "Vereiste"@nl .
 
 :role-ontwikkelaar a :AlgoritmekaderRole,
         owl:NamedIndividual ;
@@ -2908,8 +3197,5 @@ skos:definition a owl:AnnotationProperty .
     rdfs:comment "Projectleider verbinden de benodigde expertises en waarborgen alle stappen van het ontwikkelproces. Bijvoorbeeld een product-owner, proceseigenaar of IT-projectmanager."@nl .
 
 [] a owl:AllDifferent ;
-    owl:distinctMembers ( :riskgroup-exception :riskgroup-high :riskgroup-not-high :riskgroup-prohibited :riskgroup-transparency-required :role-aanbieder :role-beleid-en-advies :role-distributeur :role-gebruiksverantwoordelijke :role-gemachtigde :role-importeur :role-jurist :role-ontwikkelaar :role-productfabrikant :role-projectleider :stage-dataverkenning-en-datapreparatie :stage-implementatie :stage-monitoring-en-beheer :stage-ontwerp :stage-ontwikkelen :stage-organisatieverantwoordelijkheden :stage-probleemanalyse :stage-uitfaseren :stage-verificatie-en-validatie :transparency-not-required :transparency-required ) .
-
-[] a owl:AllDifferent ;
-    owl:distinctMembers ( :riskgroup-high :riskgroup-not-high :riskgroup-prohibited :riskgroup-transparency-required :role-aanbieder :role-beleid-en-advies :role-distributeur :role-gebruiksverantwoordelijke :role-gemachtigde :role-importeur :role-jurist :role-ontwikkelaar :role-productfabrikant :role-projectleider :stage-dataverkenning-en-datapreparatie :stage-implementatie :stage-monitoring-en-beheer :stage-ontwerp :stage-ontwikkelen :stage-organisatieverantwoordelijkheden :stage-probleemanalyse :stage-uitfaseren :stage-verificatie-en-validatie ) .
+    owl:distinctMembers ( :riskgroup-exception :riskgroup-high :riskgroup-not-high :riskgroup-prohibited :riskgroup-transparency-required :role-aanbieder :role-beleid-en-advies :role-distributeur :role-gebruiksverantwoordelijke :role-gemachtigde :role-importeur :role-jurist :role-ontwikkelaar :role-productfabrikant :role-projectleider :stage-dataverkenning-en-datapreparatie :stage-implementatie :stage-monitoring-en-beheer :stage-ontwerp :stage-ontwikkelen :stage-organisatieverantwoordelijkheden :stage-probleemanalyse :stage-uitfaseren :stage-verificatie-en-validatie :transparency-not-required :transparency-required :source-aia :source-avg :source-arc :source-aut :source-avg :source-awb :source-bio :source-bzk :source-dat :source-grw :source-woo ) .
 

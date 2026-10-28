@@ -14,15 +14,23 @@
 #    Annotation properties
 #################################################################
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/csvValue
+:csvValue rdf:type owl:AnnotationProperty ;
+          rdfs:comment "The value this individual stands for in the Algoritmekader csv files"@en .
+
+
 ###  http://www.w3.org/2004/02/skos/core#definition
 <http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
 
-:csvValue rdf:type owl:AnnotationProperty ;
-          rdfs:comment "The value this individual stands for in the Algoritmekader csv files"@en .
 
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#appliesToApplication
+:appliesToApplication rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Requirement .
+
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToRiskGroup
 :appliesToRiskGroup rdf:type owl:ObjectProperty ;
@@ -42,7 +50,7 @@
                 rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToTransparancyStatus
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/appliesToTransparencyStatus
 :appliesToTransparencyStatus rdf:type owl:ObjectProperty ;
                              rdfs:domain :Requirement ;
                              rdfs:range :TransparencyStatus .
@@ -57,7 +65,7 @@
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/hasRiskGroup
 :hasRiskGroup rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
-              rdfs:domain :AISystem ;
+              rdfs:domain :AIApplication ;
               rdfs:range :RiskGroup .
 
 
@@ -114,6 +122,30 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#AISystem
+:AISystem rdf:type owl:Class ;
+          rdfs:subClassOf :AIApplication ;
+          :csvValue "AI System"@en ,
+                    "ai-systeem" ;
+          rdfs:label "AI systeem"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#GeneralPurposeAIModel
+:GeneralPurposeAIModel rdf:type owl:Class ;
+                       rdfs:subClassOf :AIApplication ;
+                       :csvValue "ai-model-voor-algemene-doeleinden" ;
+                       rdfs:label "AI model voor algemene doeleinden"@nl ,
+                                  "General Purpose AI Model"@en .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#GeneralPurposeAISystem
+:GeneralPurposeAISystem rdf:type owl:Class ;
+                        rdfs:subClassOf :AISystem ;
+                        :csvValue "ai-systeem-voor-algemene-doeleinden" ;
+                        rdfs:label "AI systeem voor algemene doeleinden"@nl ,
+                                   "General Purpose AI System"@en .
+
+
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AIActRole
 :AIActRole rdf:type owl:Class ;
            owl:equivalentClass [ rdf:type owl:Class ;
@@ -131,10 +163,10 @@
                       "Role AI Act"@en .
 
 
-###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AISystem
-:AISystem rdf:type owl:Class ;
-          rdfs:label "AI Systeem"@nl ,
-                     "AI System"@en .
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AIApplication
+:AIApplication rdf:type owl:Class ;
+               rdfs:label "AI Applicatie"@nl ,
+                          "AI Application"@en .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/AlgoritmekaderRole
@@ -243,11 +275,11 @@
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/RiskGroup
 :RiskGroup rdf:type owl:Class ;
            owl:equivalentClass [ rdf:type owl:Class ;
-                                 owl:oneOf ( :riskgroup-high
+                                 owl:oneOf ( :riskgroup-exception
+                                             :riskgroup-high
                                              :riskgroup-not-high
                                              :riskgroup-prohibited
                                              :riskgroup-transparency-required
-                                             :riskgroup-exception
                                            )
                                ] ;
            rdfs:comment "Valt je AI-systeem onder een risicogroep uit de Europese AI-verordening, dan gelden speciale regels. Hoe groter het risico voor de samenleving, hoe strenger de regels. Het hangt ervan af waarvoor je het AI-systeem gebruikt."@nl ;
@@ -313,12 +345,83 @@
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-aia
+:source-aia rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "aia" ;
+            rdfs:label "AI Act"@en ,
+                       "AI Verordening"@nl .
+
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-avg
+:source-avg rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "avg" ;
+            rdfs:label "Algemene verordening gegevensbescherming"@nl ,
+                       "General Data Protection Regulation"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-arc
+:source-arc rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "arc" ;
+            rdfs:label "Archiefwet"@nl ,
+                       "Archive Law"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-aut
+:source-aut rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "aut" ;
+            rdfs:label "Auteursrechten"@nl ,
+                       "Copyright"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-awb
+:source-awb rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "awb" ;
+            rdfs:label "Algemene wet bestuursrecht"@nl ,
+                       "General Administrative Law Act"@en .
+
+ ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-bio
+:source-bio rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "bio" ;
+            rdfs:label "Baseline informatiebeveiliging overheid"@nl ,
+                       "Baseline Information Security for Government"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-bzk
+:source-bzk rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "bzk" ;
+            rdfs:label "Algoritmeregister"@nl ,
+                       "Algorithm register"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-dat
+:source-dat rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "dat" ;
+            rdfs:label "Databankenwet"@nl ,
+                       "Database Act"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-grw
+:source-grw rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "grw" ;
+            rdfs:label "Grondwet"@nl ,
+                       "Constitution"@en .
+
+###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance#source-woo
+:source-woo rdf:type owl:NamedIndividual ,
+                     :LegalSource ;
+            :csvValue "woo" ;
+            rdfs:label "Wet open overheid"@nl ,
+                       "Open Government Act"@en .
+
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-exception
 :riskgroup-exception rdf:type owl:NamedIndividual ,
                               :RiskGroup ;
+                     :csvValue "uitzondering-van-toepassing" ;
                      rdfs:label "AI Act exception applies"@en ,
-                                "AI Verordening uitzondering van toepassing"@nl ;
-                     :csvValue "uitzondering-van-toepassing" .
+                                "AI Verordening uitzondering van toepassing"@nl .
 
 
 ###  http://www.semanticweb.org/johannadekker/ontologies/2026/9/NL-AI-Governance/riskgroup-high
@@ -550,6 +653,17 @@
                         :stage-verificatie-en-validatie
                         :transparency-not-required
                         :transparency-required
+                        :source-aia
+                        :source-avg
+                        :source-arc
+                        :source-aut
+                        :source-avg
+                        :source-awb
+                        :source-bio
+                        :source-bzk
+                        :source-dat
+                        :source-grw
+                        :source-woo
                       )
 ] .
 
